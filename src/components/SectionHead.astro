@@ -1,0 +1,14 @@
+---
+// Section kicker ("01 · Услуги") + uppercase H2, the recurring section header.
+interface Props {
+  kicker: string;
+  title: string;
+  /** margin-bottom utility; defaults to the standard section-head gap. */
+  mb?: string;
+}
+const { kicker, title, mb = 'mb-[clamp(40px,4.4vw,68px)]' } = Astro.props;
+---
+<div class={`flex items-baseline gap-5 flex-wrap ${mb}`}>
+  <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">{kicker}</span>
+  <h2 class="text-[clamp(30px,3.6vw,50px)] uppercase tracking-[-0.015em] m-0">{title}</h2>
+</div>

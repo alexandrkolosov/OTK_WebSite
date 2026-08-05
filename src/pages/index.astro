@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Corners from '../components/Corners.astro';
+
+const services = [
+  { n: '01', href: '/services#rent', title: 'Автомобиль с водителем', body: 'Закреплённая машина и проверенный водитель под маршрутную программу компании: подача к офису, разъезды, встречи, аэропорты.', accent: false },
+  { n: '02', href: '/services#taxi', title: 'Корпоративное такси', body: 'Поездки сотрудников по заявке или по правилам компании: лимиты, центры затрат, безналичный расчёт и единый отчёт в конце месяца.', accent: false },
+  { n: '03', href: '/services#vip', title: 'Обслуживание первых лиц', body: 'Представительский класс, персональный водитель с опытом работы с руководителями, конфиденциальность и точность до минуты.', accent: false },
+  { n: '04', href: '/services#mail', title: 'Перевозка корреспонденции', body: 'Ежедневные маршруты между офисами, отделениями и контрагентами: документы, ценные пакеты, курьерская логистика по расписанию.', accent: false },
+  { n: '05', href: '/services#tms', title: 'TMS-платформа ОТК', body: 'Собственная система управления автопарком: заявки, маршруты, ГЛОНАСС-трекинг, лимиты и выгрузка отчётов в один клик.', accent: true },
+];
+
+const steps = [
+  { n: '01', title: 'Бриф и расчёт', body: 'Собираем маршрутную программу, класс автомобилей и график. Готовим коммерческое предложение за 1 рабочий день.' },
+  { n: '02', title: 'Договор', body: 'Собственная юридическая служба готовит договор в кратчайшие сроки — по итогам переговоров, конкурса или аукциона.' },
+  { n: '03', title: 'Запуск', body: 'За клиентом закрепляются автомобили и водители, подключается TMS, назначается персональный менеджер по транспорту.' },
+  { n: '04', title: 'Контроль', body: 'Ежедневный контроль выхода на линию, диспетчеризация, оптимизация маршрутов и прозрачная отчётность по каждой поездке.' },
+];
+
+const safety = [
+  { title: 'ГЛОНАСС-мониторинг', body: 'Все автомобили на линии видны в системе: положение, маршрут, скорость, простои. Клиент получает доступ к трекингу своих машин.' },
+  { title: 'Медконтроль водителей', body: 'Предрейсовые и послерейсовые осмотры, регулярное медицинское освидетельствование, контроль режима труда и отдыха.' },
+  { title: 'Техобслуживание и выпуск на линию', body: 'Плановое ТО у официальных сервисов, штатные механики, ежедневный контроль технического состояния и отметка о выпуске.' },
+  { title: 'Подмена без простоя', body: 'Резерв автомобилей и водителей: при поломке, ДТП или болезни замена выходит на маршрут в тот же день.' },
+  { title: 'Конфиденциальность', body: 'NDA с клиентом и с каждым водителем, проверка службой безопасности, работа с закрытыми маршрутами и первыми лицами.' },
+  { title: 'Страхование и чистота', body: 'ОСАГО и КАСКО на весь парк, страхование ответственности перед пассажирами, ежедневная уборка и санобработка салона.' },
+];
+
+const industries = [
+  { n: '01', title: 'Банки и финсектор', body: 'Обслуживание отделений, инкассационные и курьерские маршруты документов' },
+  { n: '02', title: 'Госкорпорации', body: 'Закрытые маршруты, допуски, работа по 223-ФЗ и 44-ФЗ' },
+  { n: '03', title: 'Промышленные холдинги', body: 'Развоз смен, обслуживание филиалов в регионах' },
+  { n: '04', title: 'ИТ и услуги', body: 'Корпоративное такси, трансферы, поездки к клиентам' },
+];
+
+const cases = [
+  { tag: 'Банк · 40 автомобилей', stat: '−23%', body: 'транспортных расходов за первый год за счёт объединения маршрутов и отказа от собственного парка.' },
+  { tag: 'Госкорпорация · 200+ поездок в день', stat: '99,4%', body: 'поездок подано вовремя за год обслуживания, включая закрытые маршруты и работу в выходные.' },
+  { tag: 'Производственный холдинг · 12 филиалов', stat: '1 отчёт', body: 'вместо 12 разрозненных: единый договор и сводная отчётность по всем городам присутствия.' },
+];
+
+const faqLeft = [
+  { q: 'Чем занимается ОТК?', a: 'ОТК оказывает корпоративные транспортные услуги: аренда автомобилей с водителем, корпоративное такси для сотрудников, перевозка корреспонденции, обслуживание первых лиц компании и TMS-платформа для управления поездками и расходами.' },
+  { q: 'Где вы работаете?', a: 'Основная зона обслуживания — Москва и Московская область. Мы также обслуживаем корпоративных клиентов в крупнейших городах России и организуем единый договор на все филиалы.' },
+  { q: 'Как происходит оплата?', a: 'Все расчёты — безналичные, по договору с юридическим лицом. Ежемесячно вы получаете акт, счёт-фактуру и детализированный отчёт по каждой поездке.' },
+];
+const faqRight = [
+  { q: 'Работаете ли вы по 44-ФЗ и 223-ФЗ?', a: 'Да. Мы участвуем в конкурсах и аукционах по 44-ФЗ и 223-ФЗ, готовим полный пакет закупочной документации и заключаем договоры на 12, 24, 36 месяцев и более.' },
+  { q: 'Что выгоднее: ваши услуги или свой водитель в штате?', a: 'Аутсорсинг снимает постоянные затраты: покупку и амортизацию автомобилей, ТО и страхование, зарплату и отпуска водителей, медконтроль и кадровый учёт. Вы платите за фактическое обслуживание, а замена водителя или машины — наша ответственность.' },
+  { q: 'Как быстро можно начать?', a: 'Расчёт — за один рабочий день, договор — в течение нескольких дней силами собственной юридической службы. Стандартный запуск обслуживания занимает от 3 до 10 рабочих дней в зависимости от объёма парка.' },
+];
+
+const tmsRows = [
+  { board: 'А-114', route: 'Офис → Сити', driver: 'Иванов А.', status: 'на линии', tag: 'tag-success' },
+  { board: 'А-207', route: 'Корреспонденция, круг 2', driver: 'Петров С.', status: 'на линии', tag: 'tag-success' },
+  { board: 'А-032', route: 'Шереметьево, встреча', driver: 'Сафин Р.', status: 'подача', tag: 'tag-accent' },
+  { board: 'А-158', route: 'Резерв', driver: '—', status: 'свободен', tag: 'tag-neutral' },
+  { board: 'А-090', route: 'Плановое ТО', driver: '—', status: 'сервис', tag: 'tag-warning' },
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://otktrans.ru/#organization',
+      name: 'ОТК',
+      legalName: 'ООО «ОТК»',
+      url: 'https://otktrans.ru/',
+      logo: 'https://otktrans.ru/logo.svg',
+      description: 'Корпоративное транспортное обслуживание: аренда автомобилей с водителем, корпоративное такси, доставка корреспонденции, обслуживание первых лиц, TMS-платформа управления автопарком.',
+      email: 'info@otktrans.ru',
+      telephone: '+7-495-787-40-95',
+      foundingDate: '2015',
+      areaServed: 'RU',
+      address: { '@type': 'PostalAddress', streetAddress: 'Костомаровский переулок, д. 3, стр. 4, офис 26', addressLocality: 'Москва', postalCode: '105120', addressCountry: 'RU' },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': 'https://otktrans.ru/#localbusiness',
+      name: 'ОТК — корпоративный транспорт',
+      image: 'https://otktrans.ru/logo.svg',
+      url: 'https://otktrans.ru/',
+      telephone: '+7-495-787-40-95',
+      priceRange: '$$',
+      address: { '@type': 'PostalAddress', streetAddress: 'Костомаровский переулок, д. 3, стр. 4, офис 26', addressLocality: 'Москва', postalCode: '105120', addressCountry: 'RU' },
+      openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '19:00' }],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://otktrans.ru/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: 'Чем занимается ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'ОТК оказывает корпоративные транспортные услуги: аренда автомобилей с водителем, корпоративное такси для сотрудников, доставка корреспонденции, транспортное обслуживание первых лиц компании и TMS-платформа для управления поездками и расходами.' } },
+        { '@type': 'Question', name: 'Где работает ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'Основная зона обслуживания — Москва и Московская область. Также ОТК обслуживает корпоративных клиентов в крупнейших городах России.' } },
+        { '@type': 'Question', name: 'Как оплачиваются услуги ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'Все расчёты ведутся в безналичной форме по договору с юридическим лицом. Ежемесячно клиент получает акт, счёт-фактуру и детализированный отчёт по поездкам.' } },
+        { '@type': 'Question', name: 'Работает ли ОТК по 44-ФЗ и 223-ФЗ?', acceptedAnswer: { '@type': 'Answer', text: 'Да. ОТК участвует в конкурсах и аукционах по 44-ФЗ и 223-ФЗ, готовит пакет документов для закупочных процедур и заключает договоры на срок от 12 до 36 месяцев и более.' } },
+      ],
+    },
+  ],
+});
+---
+<BaseLayout
+  title="ОТК — корпоративный транспорт: авто с водителем, корпоративное такси в Москве"
+  description="ОТК — транспортное обслуживание для бизнеса: аренда автомобилей с водителем, корпоративное такси, доставка корреспонденции, обслуживание первых лиц и TMS-платформа. Москва, область и города России. Безналичный расчёт, работа по 44-ФЗ и 223-ФЗ."
+  keywords="корпоративный транспорт, аренда автомобиля с водителем, корпоративное такси для юридических лиц, транспортное обслуживание компаний, перевозка сотрудников, доставка корреспонденции, TMS система, транспорт по 44-ФЗ, Москва"
+  path="/"
+  ogTitle="ОТК — корпоративное транспортное обслуживание для бизнеса"
+  ogDescription="Автомобили с водителями, корпоративное такси, доставка корреспонденции и TMS-платформа. Более 10 лет на рынке, 150+ сотрудников в штате."
+  active="home"
+  jsonLd={jsonLd}
+>
+  <Hero />
+
+  <!-- Photo banner -->
+  <section class="relative border-b border-divider h-[clamp(360px,46vw,620px)] overflow-hidden">
+    <img src="/img/1728469876516-17a32611eb24.jpg" alt="Современный электромобиль китайского бренда на площадке автопарка" class="absolute inset-0 w-full h-full object-cover block" />
+    <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(12,18,26,0.9) 0%, rgba(12,18,26,0.72) 48%, rgba(12,18,26,0.5) 100%)"></div>
+    <div class="relative max-w-container mx-auto h-full px-[clamp(20px,4vw,56px)] py-[clamp(36px,4.5vw,72px)] flex flex-col justify-end gap-[clamp(20px,2.4vw,32px)]">
+      <h2 class="m-0 max-w-[18ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] uppercase tracking-[-0.015em]">Машины выходят на линию каждый день в 6:00</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(16px,2vw,32px)] max-w-[900px]">
+        {[['300+', 'автомобилей в управлении'], ['24/7', 'диспетчерская служба'], ['15 мин', 'среднее время подачи в центре']].map(([big, small]) => (
+          <div class="border-t border-[#f2f2f359] pt-3">
+            <div class="font-heading text-[clamp(26px,2.6vw,38px)] text-[#f2f2f3] leading-none">{big}</div>
+            <div class="text-[13px] text-[#f2f2f3b8] mt-1">{small}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 · Услуги -->
+  <section id="services" class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)]">
+      <SectionHead kicker="01 · Услуги" title="Пять форматов транспортного обслуживания" />
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {services.map((s) => (
+          <a class="card blueprint no-underline text-inherit p-[clamp(28px,2.8vw,38px)] gap-3" href={s.href} style={s.accent ? 'border-color:var(--color-accent)' : undefined}>
+            <span class="card-kicker">{s.n}</span>
+            <span class="font-heading text-[22px] leading-[1.1] uppercase">{s.title}</span>
+            <p class="card-body text-sm">{s.body}</p>
+            <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Подробнее →</span>
+            <Corners />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · Как мы работаем -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)]">
+      <SectionHead kicker="02 · Как мы работаем" title="От заявки до маршрута — четыре шага" />
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] border-t border-divider">
+        {steps.map((st, i) => (
+          <div class={`py-[clamp(30px,3vw,42px)] ${i === 0 ? 'pr-[clamp(18px,2vw,28px)] pl-0' : i === steps.length - 1 ? 'px-0 pl-[clamp(18px,2vw,28px)]' : 'px-[clamp(18px,2vw,28px)]'} ${i < steps.length - 1 ? 'border-r border-divider' : ''}`}>
+            <div class="font-heading text-[clamp(44px,4.6vw,64px)] leading-none text-accent-300">{st.n}</div>
+            <h3 class="text-[20px] uppercase mt-3 mb-2">{st.title}</h3>
+            <p class="m-0 text-sm leading-[1.6] text-text/[0.72]">{st.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · Безопасность -->
+  <section id="safety" class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)]">
+      <SectionHead kicker="03 · Безопасность" title="Контроль на каждом уровне" />
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {safety.map((c) => (
+          <div class="blueprint p-[clamp(28px,2.8vw,38px)] bg-bg">
+            <h3 class="text-[19px] uppercase mt-0 mb-2.5">{c.title}</h3>
+            <p class="m-0 text-sm leading-[1.6] text-text/[0.72]">{c.body}</p>
+            <Corners />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Технологии / TMS -->
+  <section id="tms" class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-start">
+      <div>
+        <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">04 · Технологии</span>
+        <h2 class="text-[clamp(30px,3.6vw,50px)] uppercase tracking-[-0.015em] mt-3.5 mb-[18px]">TMS-платформа для управления автопарком</h2>
+        <p class="text-base leading-[1.65] max-w-[48ch] text-text/[0.78]">Собственная система ОТК заменяет переписку и таблицы: заявки на поездку, маршруты, лимиты по подразделениям, статус машин на линии и закрывающие документы — в одном интерфейсе.</p>
+        <ul class="list-none p-0 mt-[22px] mb-[26px] flex flex-col gap-3">
+          {['Заявка на автомобиль за 30 секунд: сотрудник из веб-формы, координатор — списком', 'Онлайн-карта с положением автомобилей и фактическим временем подачи', 'Лимиты и правила: центры затрат, согласование, контроль перерасхода', 'Отчёты за период в Excel: по сотруднику, подразделению, маршруту и стоимости'].map((li) => (
+            <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px]"><span class="text-accent">—</span><span>{li}</span></li>
+          ))}
+        </ul>
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/services#tms">Как устроена платформа<Corners /></a>
+      </div>
+      <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style="background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg))">
+        <div class="flex justify-between items-baseline pb-3 border-b border-divider mb-3">
+          <span class="font-heading text-[13px] tracking-[0.12em] uppercase">Автомобили на линии</span>
+          <span class="text-xs text-text/[0.55]">сегодня, 09:42</span>
+        </div>
+        <table class="table">
+          <thead><tr><th>Борт</th><th>Маршрут</th><th>Водитель</th><th>Статус</th></tr></thead>
+          <tbody>
+            {tmsRows.map((r) => (
+              <tr><td>{r.board}</td><td>{r.route}</td><td>{r.driver}</td><td><span class={`tag ${r.tag}`}>{r.status}</span></td></tr>
+            ))}
+          </tbody>
+        </table>
+        <div class="mt-3.5 text-xs text-text/[0.55]">Схематичное представление интерфейса TMS ОТК</div>
+        <Corners />
+      </div>
+    </div>
+  </section>
+
+  <!-- Отрасли -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(60px,7vw,100px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] mb-6">Отрасли, которые обслуживает ОТК</div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px bg-bg border border-divider">
+        {industries.map((ind) => (
+          <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
+            <span class="font-heading text-[13px] text-accent">{ind.n}</span>
+            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase">{ind.title}</span>
+            <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Кейсы -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)]">
+      <SectionHead kicker="05 · Кейсы" title="Что меняется после перехода на ОТК" />
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {cases.map((c) => (
+          <div class="blueprint p-[clamp(30px,3vw,40px)]">
+            <span class="tag tag-outline">{c.tag}</span>
+            <div class="font-heading text-[clamp(38px,4vw,54px)] leading-none mt-[18px] mb-1.5">{c.stat}</div>
+            <p class="m-0 text-[15px] leading-[1.6] text-text/[0.75]">{c.body}</p>
+            <Corners />
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-secondary min-h-[48px] mt-[26px] px-6 tracking-[0.07em] uppercase" href="/cases">Все кейсы и отзывы</a>
+    </div>
+  </section>
+
+  <!-- 06 · FAQ -->
+  <section id="faq" class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)]">
+      <SectionHead kicker="06 · FAQ" title="Частые вопросы" mb="mb-[clamp(36px,4vw,60px)]" />
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(28px,3vw,52px)]">
+        {[faqLeft, faqRight].map((col) => (
+          <div class="flex flex-col gap-9">
+            {col.map((item) => (
+              <div class="border-t border-divider pt-4">
+                <h3 class="text-[20px] mt-0 mb-2">{item.q}</h3>
+                <p class="m-0 text-[15px] leading-[1.65] text-text/[0.78]">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-ghost mt-[26px] tracking-[0.07em] uppercase" href="/contacts#faq">Все вопросы и ответы →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-accent-900 text-[#f2f2f3]">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
+      <div>
+        <h2 class="text-[clamp(30px,3.8vw,54px)] uppercase tracking-[-0.015em] m-0 mb-3.5 max-w-[18ch]">Рассчитаем обслуживание по вашей маршрутной программе</h2>
+        <p class="m-0 text-base leading-[1.6] max-w-[46ch] text-[#f2f2f3c7]">Пришлите список маршрутов или просто опишите задачу — вернёмся с расчётом и вариантами класса автомобилей.</p>
+      </div>
+      <div class="flex gap-3 flex-wrap">
+        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener"><Corners />Telegram</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/contacts">Форма на сайте</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

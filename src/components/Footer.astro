@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+---
+<footer class="bg-accent-900 text-bg">
+  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(60px,7vw,100px)] pb-7 grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-[clamp(34px,3.8vw,68px)]">
+    <div class="flex flex-col gap-[14px]">
+      <Logo variant="footer" width={106} height={32} />
+      <p class="m-0 text-sm leading-[1.6] text-[#f2f2f3b8] max-w-[30ch]">Корпоративное транспортное обслуживание: автомобили с водителями, корпоративное такси, доставка корреспонденции и TMS-платформа управления автопарком.</p>
+      <div class="flex gap-[10px] flex-wrap mt-1">
+        <a class="btn min-h-[44px] text-[#f2f2f3] border-[#f2f2f359] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn min-h-[44px] text-[#f2f2f3] border-[#f2f2f359] tracking-[0.06em] uppercase" href="tel:+74957874095">Позвонить</a>
+      </div>
+    </div>
+    <div class="flex flex-col gap-[10px]">
+      <div class="font-heading text-xs tracking-[0.12em] uppercase text-accent-300 mb-1">Услуги</div>
+      <a href="/services#rent" class="text-sm text-[#f2f2f3] no-underline hover:underline">Аренда авто с водителем</a>
+      <a href="/services#taxi" class="text-sm text-[#f2f2f3] no-underline hover:underline">Корпоративное такси</a>
+      <a href="/services#vip" class="text-sm text-[#f2f2f3] no-underline hover:underline">Обслуживание первых лиц</a>
+      <a href="/services#mail" class="text-sm text-[#f2f2f3] no-underline hover:underline">Перевозка корреспонденции</a>
+      <a href="/services#tms" class="text-sm text-[#f2f2f3] no-underline hover:underline">TMS-платформа ОТК</a>
+    </div>
+    <div class="flex flex-col gap-[10px]">
+      <div class="font-heading text-xs tracking-[0.12em] uppercase text-accent-300 mb-1">Компания</div>
+      <a href="/about" class="text-sm text-[#f2f2f3] no-underline hover:underline">О компании</a>
+      <a href="/fleet" class="text-sm text-[#f2f2f3] no-underline hover:underline">Автопарк</a>
+      <a href="/cases" class="text-sm text-[#f2f2f3] no-underline hover:underline">Кейсы и клиенты</a>
+      <a href="/about#tenders" class="text-sm text-[#f2f2f3] no-underline hover:underline">Тендеры и закупки</a>
+      <a href="/blog" class="text-sm text-[#f2f2f3] no-underline hover:underline">Блог</a>
+    </div>
+    <div class="flex flex-col gap-[10px]">
+      <div class="font-heading text-xs tracking-[0.12em] uppercase text-accent-300 mb-1">Контакты</div>
+      <a href="tel:+74957874095" class="font-heading font-semibold text-[22px] text-[#f2f2f3] no-underline">+7 (495) 787-40-95</a>
+      <a href="mailto:info@otktrans.ru" class="text-sm text-[#f2f2f3] no-underline hover:underline">info@otktrans.ru</a>
+      <p class="m-0 text-sm leading-[1.6] text-[#f2f2f3b8]">105120, Москва, Костомаровский переулок, д. 3, стр. 4, офис 26</p>
+      <p class="m-0 text-[13px] text-[#f2f2f399]">Пн–Пт 9:00–19:00 · диспетчерская 24/7</p>
+    </div>
+  </div>
+  <div class="max-w-container mx-auto px-[clamp(16px,3vw,40px)] pt-5 pb-10 border-t border-[#f2f2f32e] flex gap-5 flex-wrap justify-between text-[13px] text-[#f2f2f39e]">
+    <span>© 2026 ООО «ОТК». Транспортные услуги для бизнеса в Москве и регионах России. Фотографии — Unsplash (заменяются на съёмку парка).</span>
+    <span class="flex gap-5 flex-wrap"><a href="/contacts#privacy" class="text-inherit no-underline hover:underline">Политика конфиденциальности</a><a href="/contacts" class="text-inherit no-underline hover:underline">Реквизиты</a></span>
+  </div>
+</footer>

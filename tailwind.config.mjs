@@ -1,0 +1,70 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}'],
+  theme: {
+    extend: {
+      colors: {
+        bg: '#f2f2f3',
+        surface: '#e9e9ea',
+        text: '#1d1f20',
+        divider: 'rgba(29,31,32,0.16)',
+        accent: {
+          DEFAULT: '#5980a6',
+          100: '#eef6ff',
+          200: '#d6ebff',
+          300: '#b5d9fd',
+          400: '#94bce3',
+          500: '#749dc4',
+          600: '#597ea3',
+          700: '#416180',
+          800: '#2c455d',
+          900: '#1d2d3d',
+        },
+        'accent-2': {
+          DEFAULT: '#728fab',
+          100: '#eef6ff',
+          200: '#d6ebff',
+          300: '#bdd8f2',
+          400: '#9ebbd8',
+          500: '#7e9cb8',
+          600: '#627d98',
+          700: '#486077',
+          800: '#314457',
+          900: '#1f2d3a',
+        },
+        neutral: {
+          100: '#f5f5f8',
+          200: '#e7e7ea',
+          300: '#d4d4d7',
+          400: '#b7b7ba',
+          500: '#98989b',
+          600: '#7a7a7d',
+          700: '#5d5d60',
+          800: '#424244',
+          900: '#2b2b2d',
+        },
+        danger: { DEFAULT: '#a6413a', tint: '#f7e6e4', deep: '#6d2924' },
+        warning: { DEFAULT: '#a67a33', tint: '#f7eddb', deep: '#6d4f1f' },
+        success: { DEFAULT: '#4a7d5c', tint: '#e3f0e8', deep: '#2e5139' },
+      },
+      fontFamily: {
+        heading: ['"Barlow Condensed"', 'system-ui', 'sans-serif'],
+        body: ['"Barlow"', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        ds: '4px',
+        'ds-sm': '2px',
+        'ds-lg': '7px',
+      },
+      boxShadow: {
+        'ds-sm': '0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent)',
+        'ds-md': '0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent)',
+        'ds-lg': '0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent)',
+      },
+      maxWidth: {
+        container: '1320px',
+      },
+    },
+  },
+  plugins: [],
+};

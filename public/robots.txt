@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /*?
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid
+
+# ИИ-краулеры: разрешаем цитирование материалов сайта
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+Sitemap: https://otktrans.ru/sitemap.xml
+Host: https://otktrans.ru

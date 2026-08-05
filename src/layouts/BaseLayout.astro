@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  /** Canonical path, e.g. "/services". Combined with site origin. */
+  path?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  ogImage?: string;
+  /** Raw JSON-LD string(s) injected into <script type="application/ld+json">. */
+  jsonLd?: string | string[];
+  active?: 'services' | 'fleet' | 'cases' | 'about' | 'blog' | 'contacts' | 'home';
+}
+
+const {
+  title,
+  description,
+  keywords,
+  path = '/',
+  ogTitle,
+  ogDescription,
+  ogType = 'website',
+  ogImage,
+  jsonLd,
+  active = 'home',
+} = Astro.props;
+
+const origin = 'https://otktrans.ru';
+const canonical = new URL(path, origin).href;
+const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {keywords && <meta name="keywords" content={keywords} />}
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={ogTitle ?? title} />
+  <meta property="og:description" content={ogDescription ?? description} />
+  <meta property="og:url" content={canonical} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" />
+  {jsonLdBlocks.map((block) => (
+    <script type="application/ld+json" set:html={block} />
+  ))}
+  <slot name="head" />
+</head>
+<body>
+  <Header active={active} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

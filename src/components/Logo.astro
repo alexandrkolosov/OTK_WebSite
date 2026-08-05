@@ -1,0 +1,26 @@
+---
+// OTK logo mark. `variant` swaps fills for the dark header vs. the deep-steel footer.
+interface Props {
+  variant?: 'header' | 'footer';
+  width?: number;
+  height?: number;
+  class?: string;
+}
+const { variant = 'header', width = 100, height = 30, class: className } = Astro.props;
+
+const wordmark = variant === 'footer' ? '#f2f2f3' : '#2c455d';
+const arrowMain = variant === 'footer' ? '#94bce3' : '#5980a6';
+const arrowDark = variant === 'footer' ? '#f2f2f3' : '#2c455d';
+const arrowAccent = variant === 'footer' ? '#b5d9fd' : '#1d2d3d';
+---
+<svg width={width} height={height} viewBox="0 0 83 25" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OTK Group" class={className}>
+  <path d="M40.8955 3.63687C35.834 3.63687 32.0239 7.44031 32.0239 12.4931C32.0239 17.5458 35.834 21.3493 40.8955 21.3493C45.957 21.3493 49.767 17.5458 49.767 12.4931C49.767 7.45419 45.943 3.63687 40.8955 3.63687ZM40.8955 17.7679C38.1283 17.7679 35.9591 15.4498 35.9591 12.4931C35.9591 9.49473 38.0727 7.21821 40.8955 7.21821C43.7043 7.21821 45.8318 9.48085 45.8318 12.4931C45.8179 15.4498 43.6487 17.7679 40.8955 17.7679Z" fill={wordmark}></path>
+  <path d="M50.6431 7.55137H56.0105V21.0439H59.9457V7.55137H65.2853V3.97003H50.6431V7.55137Z" fill={wordmark}></path>
+  <path d="M82.7781 3.97003H77.7166L71.6957 10.0916V3.97003H67.7466V21.0439H71.6957V15.075L77.522 21.0439H82.7781L74.435 12.507L82.7781 3.97003Z" fill={wordmark}></path>
+  <path d="M8.74639 12.5069L0 25H17.5067L8.74639 12.5069Z" fill={arrowDark}></path>
+  <path d="M26.2531 12.5069L17.5067 0H0L8.74638 12.5069L17.5067 25L26.2531 12.5069Z" fill={arrowMain}></path>
+  <path d="M6.98047 15.0333L17.5067 25L8.74643 12.5069L6.98047 15.0333Z" fill={arrowAccent}></path>
+  {variant === 'header' && (
+    <path opacity="0.25" d="M17.5067 0C17.5067 0 0.347631 0 0 0L26.2531 12.5069L17.5067 0Z" fill="white"></path>
+  )}
+</svg>
