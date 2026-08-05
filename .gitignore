@@ -10,5 +10,8 @@ build/
 # Astro
 .astro/
 
+# Vercel
+.vercel/
+
 # Design export kept locally as reference, not committed
 source/

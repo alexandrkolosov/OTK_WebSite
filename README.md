@@ -19,15 +19,37 @@ npm install
 npm run dev        # http://localhost:4321
 ```
 
-## Сборка и запуск (продакшн)
+## Сборка
 
 ```bash
-npm run build      # → dist/ (статические страницы + серверный entry)
-node ./dist/server/entry.mjs   # запускает Node-сервер (по умолчанию порт 4321)
+npm run build      # → .vercel/output (статика + serverless-функция формы)
 ```
 
-Все контентные страницы пререндерятся в статику; на сервере работает только
-`/api/contact/` (обработчик формы).
+Все контентные страницы пререндерятся в статику; `/api/contact/` деплоится как
+serverless-функция (адаптер `@astrojs/vercel`).
+
+## Деплой на Vercel
+
+Проект настроен под Vercel (`@astrojs/vercel`). Два способа:
+
+**Через дашборд (проще всего):**
+1. [vercel.com/new](https://vercel.com/new) → Import Git Repository → выберите
+   `alexandrkolosov/OTK_WebSite`. Framework Preset определится как **Astro**
+   автоматически, отдельные настройки сборки не нужны.
+2. В **Settings → Environment Variables** добавьте `TELEGRAM_BOT_TOKEN` и
+   `TELEGRAM_CHAT_ID` (значения — см. `.env.example`).
+3. **Deploy**. Каждый `git push` в `main` будет автоматически деплоиться.
+
+**Через CLI:**
+```bash
+npm i -g vercel
+vercel            # первый раз — привяжет проект (нужен вход в аккаунт)
+vercel env add TELEGRAM_BOT_TOKEN
+vercel env add TELEGRAM_CHAT_ID
+vercel --prod
+```
+
+После деплоя привяжите домен `otktrans.ru` в **Settings → Domains**.
 
 ## Форма заявки → Telegram
 
