@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Corners from '../../components/Corners.astro';
+
+const featured = {
+  href: '/blog/svoy-voditel-ili-autsorsing/',
+  tag: 'Главный материал',
+  title: 'Свой водитель или аутсорсинг: как посчитать реальную стоимость',
+  body: 'Полная себестоимость штатного водителя с автомобилем складывается из одиннадцати статей, половину из которых обычно забывают. Разбираем по пунктам и сравниваем с обслуживанием по договору.',
+  img: '/img/1635859890085-ec8cb5466806.jpg',
+  alt: 'Специалист считает расходы, разложив документы на столе',
+};
+
+const articles = [
+  {
+    href: '/blog/transportnoe-obsluzhivanie-44-fz/',
+    img: '/img/1450101499163-c8848c66ca85.jpg',
+    alt: 'Человек заполняет документы по закупочной процедуре',
+    imgClass: '',
+    kicker: 'Закупки',
+    title: 'Транспортное обслуживание по 44-ФЗ: что проверить в техзадании',
+    body: 'Класс автомобилей, время подачи, требования к водителям и штрафные санкции — формулировки, из-за которых контракт становится невыполнимым.',
+  },
+  {
+    href: '/blog/glonass-monitoring-rashody/',
+    img: '/img/1482029255085-35a4a48b7084.jpg',
+    alt: 'Навигация и мониторинг маршрута на экране в автомобиле',
+    imgClass: '',
+    kicker: 'Контроль',
+    title: 'Как ГЛОНАСС-мониторинг снижает транспортные расходы',
+    body: 'Холостые пробеги, простои и поездки вне маршрутной программы: что видно в данных мониторинга и как на этом экономят 10–20% бюджета.',
+  },
+  {
+    href: '/blog/korporativnoe-taksi-pravila/',
+    img: '/img/1611448746128-7c39e03b71e4.jpg',
+    alt: 'Поездка по городу: вид с водительского места',
+    imgClass: '',
+    kicker: 'Организация',
+    title: 'Корпоративное такси: правила, лимиты и борьба с перерасходом',
+    body: 'Как описать политику поездок так, чтобы сотрудники ей пользовались, а финансовый департамент видел прозрачную картину расходов.',
+  },
+  {
+    href: '/blog/proverka-transportnogo-podryadchika/',
+    img: '/img/1562564055-71e051d33c19.jpg',
+    alt: 'Подписание документов при проверке подрядчика',
+    imgClass: '',
+    kicker: 'Безопасность',
+    title: 'Что должен проверять заказчик у транспортного подрядчика',
+    body: 'Медконтроль, путевые листы, страхование, режим труда и отдыха водителей — чек-лист документов, которые стоит запросить до подписания договора.',
+  },
+  {
+    href: '/blog/tms-dlya-avtoparka/',
+    img: '/img/tms-otk.png',
+    alt: 'Интерфейс TMS ОТК: обзор компании с филиалами, поставщиками и автомобилями',
+    imgClass: 'object-left-top',
+    kicker: 'Технологии',
+    title: 'TMS для автопарка: какие процессы автоматизируются первыми',
+    body: 'Заявки, назначение машин, согласование, отчётность: с чего начинать внедрение и как измерять эффект по месяцам.',
+  },
+  {
+    href: '/blog/perevozka-korrespondencii-marshrut/',
+    img: '/img/1583521214690-73421a1829a9.jpg',
+    alt: 'Стопки документов и папок для передачи между офисами',
+    imgClass: '',
+    kicker: 'Логистика',
+    title: 'Перевозка корреспонденции между офисами: как построить маршрут',
+    body: 'Круговые маршруты, окна приёма-передачи и реестры: как сделать доставку документов предсказуемой и дешевле курьеров.',
+  },
+];
+---
+<BaseLayout
+  title="Блог ОТК — корпоративный транспорт: как выбрать, считать и контролировать"
+  description="Материалы ОТК о корпоративном транспорте: аутсорсинг автопарка против штатных водителей, закупки по 44-ФЗ, ГЛОНАСС-мониторинг, правила корпоративного такси, TMS и маршруты доставки корреспонденции."
+  path="/blog/"
+  active="blog"
+>
+  <!-- Hero -->
+  <section
+    class="border-b border-divider"
+    style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px"
+  >
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Блог</div>
+      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Разбираем корпоративный транспорт по частям</h1>
+      <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Практические материалы для административных директоров, служб закупок и финансовых департаментов: как считать стоимость, что проверять у подрядчика и как устроен контроль поездок.</p>
+    </div>
+  </section>
+
+  <!-- Материалы -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)]">
+      <!-- Главный материал -->
+      <a
+        class="blueprint no-underline text-inherit grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(30px,3.2vw,56px)] p-[clamp(32px,3.4vw,50px)] mb-[clamp(20px,2.4vw,32px)]"
+        href={featured.href}
+        style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))"
+      >
+        <div>
+          <span class="tag tag-outline">{featured.tag}</span>
+          <h2 class="text-[clamp(26px,3vw,40px)] uppercase tracking-[-0.015em] my-4 mb-3">{featured.title}</h2>
+          <p class="m-0 text-[15px] leading-[1.65] text-text/[0.78] max-w-[56ch]">{featured.body}</p>
+          <span class="inline-block mt-[18px] text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать материал →</span>
+        </div>
+        <div class="min-h-[220px] border border-divider">
+          <img src={featured.img} alt={featured.alt} loading="lazy" class="w-full h-full object-cover block" />
+        </div>
+        <Corners />
+      </a>
+
+      <!-- Сетка статей -->
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(22px,2.4vw,34px)]">
+        {articles.map((a) => (
+          <a class="blueprint no-underline text-inherit p-[clamp(24px,2.4vw,32px)] flex flex-col gap-2.5" href={a.href}>
+            <div class="h-[150px] border border-divider mb-1.5">
+              <img src={a.img} alt={a.alt} loading="lazy" class={`w-full h-full object-cover block ${a.imgClass}`} />
+            </div>
+            <span class="card-kicker">{a.kicker}</span>
+            <h3 class="text-[22px] uppercase m-0">{a.title}</h3>
+            <p class="m-0 text-sm leading-[1.6] text-text/[0.72] flex-1">{a.body}</p>
+            <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать →</span>
+            <Corners />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

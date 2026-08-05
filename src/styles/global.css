@@ -300,6 +300,18 @@
   }
   .dialog-body { font-size: 14px; opacity: 0.85; }
   .dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+  /* — article prose — typography for the body of a blog article. Scoped to
+       DIRECT children so blueprint call-outs / CTA boxes keep their own type. */
+  .article-body > p { font-size: 16px; line-height: 1.75; margin: 0 0 var(--space-3); }
+  .article-body > h2 { font-size: clamp(24px, 2.6vw, 32px); text-transform: uppercase; margin: 36px 0 12px; }
+  .article-body > h3 { font-size: clamp(20px, 2.2vw, 26px); text-transform: uppercase; margin: 28px 0 10px; }
+  .article-body > ul, .article-body > ol { font-size: 16px; line-height: 1.8; padding-left: 22px; margin: 0 0 20px; }
+  .article-body > ul > li, .article-body > ol > li { margin-bottom: 4px; }
+  .article-body > blockquote {
+    margin: 24px 0; padding-left: 18px; border-left: 2px solid var(--color-accent);
+    font-size: 17px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  }
 }
 
 @tailwind utilities;

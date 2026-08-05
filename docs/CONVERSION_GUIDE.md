@@ -131,6 +131,61 @@ SEO-мета, `og:*`, `<link rel=canonical>`, `application/ld+json` берутс
 через `.map(...)`, как сделано в `index.astro` (services, safety, cases, faq).
 Это уменьшает ошибки и повторяет эталонный стиль.
 
+## Статьи блога (используют `ArticleLayout`)
+
+Страницы статей (`Article*.dc.html` → `src/pages/blog/<slug>.astro`) собираются не
+через `BaseLayout` напрямую, а через `src/layouts/ArticleLayout.astro`, который
+уже даёт всю «обвязку» статьи: хлебную крошку «← Блог», кикер-категорию, H1, лид,
+мета-строку, hero-картинку в `.blueprint`. Ты передаёшь их пропсами, а в слот
+кладёшь только тело статьи.
+
+```astro
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Corners from '../../components/Corners.astro';
+const jsonLd = JSON.stringify({ /* Article/BlogPosting из <helmet> исходника */ });
+---
+<ArticleLayout
+  pageTitle="…<title> из <helmet>…"
+  description="…meta description…"
+  path="/blog/<slug>/"
+  heading="…текст H1 из <h1> исходника…"
+  category="…кикер-категория, напр. Закупки…"
+  lead="…первый абзац-лид (19px) дословно…"
+  meta="…мета-строка, напр. Материал ОТК · 6 минут чтения…"
+  heroImg="/img/…"
+  heroAlt="…alt hero-картинки…"
+  jsonLd={jsonLd}
+>
+  <!-- ТОЛЬКО тело статьи -->
+  <h2>1. …</h2>
+  <p>…</p>
+  <div class="blueprint p-[clamp(24px,2.6vw,34px)] my-6"><table class="table">…</table><Corners /></div>
+  <ul><li>…</li></ul>
+  <!-- финальный CTA-бокс статьи — дословно из исходника -->
+  <div class="blueprint p-[clamp(30px,3vw,42px)] mt-9" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <h2 class="text-[26px] uppercase mt-0 mb-2.5">…</h2>
+    <p class="m-0 mb-[18px] text-[15px] leading-[1.65] text-text/[0.78]">…</p>
+    <div class="flex gap-3 flex-wrap">
+      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram<Corners /></a>
+      <a class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" href="/kontakty/">Оставить заявку</a>
+    </div>
+    <Corners />
+  </div>
+</ArticleLayout>
+```
+
+Важное про тело:
+- Обёртка `.article-body` и типографика (p 16px/1.75, h2 uppercase clamp, ul 16px/1.8)
+  уже заданы в `global.css` для **прямых** детей слота. Поэтому обычные `<h2>`, `<p>`,
+  `<ul>` пиши БЕЗ классов — они получат правильный вид автоматически.
+- Врезки (`<div class="blueprint …">` с таблицей или CTA) и всё внутри них — НЕ
+  прямые «текстовые» дети, поэтому прозовые стили их не трогают; для них ставь
+  утилиты/классы как обычно (напр. CTA-заголовок `text-[26px]`, CTA-абзац `text-[15px]`).
+- `<i class="corner …">` внутри `.blueprint` заменяй на `<Corners />`.
+- `pageTitle` — это `<title>` (для SEO), `heading` — текст `<h1>` (они различаются).
+- `path` — русский слаг статьи из таблицы маршрутов, с завершающим слэшем.
+
 ## Чек-лист самопроверки перед завершением
 
 - [ ] Весь текст и числа перенесены дословно, порядок секций сохранён.

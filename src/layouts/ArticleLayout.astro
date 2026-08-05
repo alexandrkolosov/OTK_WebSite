@@ -1,0 +1,70 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Corners from '../components/Corners.astro';
+
+interface Props {
+  /** SEO <title> (from the source <helmet>). */
+  pageTitle: string;
+  description: string;
+  keywords?: string;
+  /** Canonical path, e.g. "/blog/transportnoe-obsluzhivanie-44-fz/". */
+  path: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  jsonLd?: string | string[];
+  /** Article H1. */
+  heading: string;
+  /** Kicker / category, e.g. "Закупки". */
+  category: string;
+  /** Lead paragraph (plain text). */
+  lead: string;
+  /** Byline/meta line, e.g. "Материал ОТК · 6 минут чтения". */
+  meta: string;
+  heroImg: string;
+  heroAlt: string;
+}
+
+const {
+  pageTitle,
+  description,
+  keywords,
+  path,
+  ogTitle,
+  ogDescription,
+  jsonLd,
+  heading,
+  category,
+  lead,
+  meta,
+  heroImg,
+  heroAlt,
+} = Astro.props;
+---
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  keywords={keywords}
+  path={path}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogType="article"
+  jsonLd={jsonLd}
+  active="blog"
+>
+  <article class="border-b border-divider">
+    <div class="max-w-[820px] mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
+      <a href="/blog/" class="text-[13px] tracking-[0.06em] uppercase no-underline text-accent-700">← Блог</a>
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mt-5 mb-2.5">{category}</div>
+      <h1 class="text-[clamp(32px,4.4vw,56px)] leading-[1.05] uppercase tracking-[-0.02em] m-0 mb-[18px]">{heading}</h1>
+      <p class="text-[19px] leading-[1.6] text-text/[0.78] m-0 mb-2.5">{lead}</p>
+      <div class="text-[13px] text-text/[0.55] border-t border-divider pt-3.5 mb-7">{meta}</div>
+      <div class="blueprint h-[clamp(200px,26vw,320px)] mb-8">
+        <img src={heroImg} alt={heroAlt} loading="lazy" class="w-full h-full object-cover block" />
+        <Corners />
+      </div>
+      <div class="article-body">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
