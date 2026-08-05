@@ -142,13 +142,13 @@ const jsonLd = JSON.stringify({
       </div>
       <div class="blueprint p-[clamp(28px,2.8vw,38px)]">
         <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] pb-3 border-b border-divider mb-3.5">Документы по запросу</div>
-        <table class="table">
+        <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <tbody>
             {tenderDocs.map((d) => (
               <tr><td>{d}</td></tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
         <a class="btn btn-primary blueprint min-h-[48px] mt-[18px] tracking-[0.06em] uppercase" href="mailto:info@otktrans.ru?subject=Запрос%20документов%20для%20закупки">Запросить пакет документов<Corners /></a>
         <Corners />
       </div>

@@ -2,9 +2,9 @@
 import Logo from './Logo.astro';
 ---
 <footer class="bg-accent-900 text-bg">
-  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(60px,7vw,100px)] pb-7 grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-[clamp(34px,3.8vw,68px)]">
-    <div class="flex flex-col gap-[14px]">
-      <Logo variant="footer" width={106} height={32} />
+  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(44px,7vw,100px)] pb-6 grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-x-6 gap-y-9 lg:gap-[clamp(34px,3.8vw,68px)]">
+    <div class="col-span-2 lg:col-span-1 flex flex-col gap-[14px]">
+      <Logo variant="footer" width={96} height={29} />
       <p class="m-0 text-sm leading-[1.6] text-[#f2f2f3b8] max-w-[30ch]">Корпоративное транспортное обслуживание: автомобили с водителями, корпоративное такси, доставка корреспонденции и TMS-платформа управления автопарком.</p>
       <div class="flex gap-[10px] flex-wrap mt-1">
         <a class="btn min-h-[44px] text-[#f2f2f3] border-[#f2f2f359] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
@@ -29,13 +29,13 @@ import Logo from './Logo.astro';
     </div>
     <div class="flex flex-col gap-[10px]">
       <div class="font-heading text-xs tracking-[0.12em] uppercase text-accent-300 mb-1">Контакты</div>
-      <a href="tel:+74957874095" class="font-heading font-semibold text-[22px] text-[#f2f2f3] no-underline">+7 (495) 787-40-95</a>
+      <a href="tel:+74957874095" class="font-heading font-semibold text-[20px] lg:text-[22px] text-[#f2f2f3] no-underline">+7 (495) 787-40-95</a>
       <a href="mailto:info@otktrans.ru" class="text-sm text-[#f2f2f3] no-underline hover:underline">info@otktrans.ru</a>
       <p class="m-0 text-sm leading-[1.6] text-[#f2f2f3b8]">105120, Москва, Костомаровский переулок, д. 3, стр. 4, офис 26</p>
       <p class="m-0 text-[13px] text-[#f2f2f399]">Пн–Пт 9:00–19:00 · диспетчерская 24/7</p>
     </div>
   </div>
-  <div class="max-w-container mx-auto px-[clamp(16px,3vw,40px)] pt-5 pb-10 border-t border-[#f2f2f32e] flex gap-5 flex-wrap justify-between text-[13px] text-[#f2f2f39e]">
+  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-5 pb-8 border-t border-[#f2f2f32e] flex gap-x-5 gap-y-3 flex-wrap justify-between text-[13px] text-[#f2f2f39e]">
     <span>© 2026 ООО «ОТК». Транспортные услуги для бизнеса в Москве и регионах России. Фотографии — Unsplash (заменяются на съёмку парка).</span>
     <span class="flex gap-5 flex-wrap"><a href="/kontakty/#privacy" class="text-inherit no-underline hover:underline">Политика конфиденциальности</a><a href="/kontakty/" class="text-inherit no-underline hover:underline">Реквизиты</a></span>
   </div>

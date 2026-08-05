@@ -49,12 +49,12 @@ const advantages = [
   <p>Окно — это интервал, в который в точке готовы отдать и принять пакет. Без окон маршрут рассыпается: водитель приезжает, а ответственный на совещании. Практика — два окна в день: утреннее (сбор из отделений) и послеобеденное (развоз входящих). Каждое окно — 30–60 минут.</p>
 
   <div class="blueprint p-[clamp(24px,2.6vw,34px)] my-6">
-    <table class="table">
+    <div class="overflow-x-auto"><table class="table min-w-[440px]">
       <thead><tr><th>Время</th><th>Точка</th><th>Действие</th></tr></thead>
       <tbody>
         {scheduleRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
-    </table>
+    </table></div>
     <Corners />
   </div>
 

@@ -84,6 +84,14 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; }
+  html {
+    /* Offset in-page anchor jumps so targets aren't hidden under the sticky header. */
+    scroll-padding-top: 84px;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
   body {
     margin: 0;
     background: var(--color-bg);

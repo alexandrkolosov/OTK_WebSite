@@ -65,12 +65,12 @@ const questions = [
   <h2>Как считать: стоимость часа фактической поездки</h2>
   <p>Сведите все годовые расходы в одну сумму и разделите её не на календарные часы, а на часы, когда автомобиль реально везёт сотрудников. Именно этот показатель сопоставим со ставкой подрядчика.</p>
   <div class="blueprint p-[clamp(24px,2.6vw,34px)] my-6">
-    <table class="table">
+    <div class="overflow-x-auto"><table class="table min-w-[440px]">
       <thead><tr><th>Показатель</th><th>Свой водитель</th><th>Обслуживание ОТК</th></tr></thead>
       <tbody>
         {compareRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
-    </table>
+    </table></div>
     <Corners />
   </div>
 

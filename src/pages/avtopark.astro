@@ -84,14 +84,14 @@ const standardRows = [
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)]">
       <h2 class="text-[clamp(26px,3vw,42px)] uppercase tracking-[-0.015em] m-0 mb-6">Стандарт обслуживания парка</h2>
       <div class="blueprint p-[clamp(24px,2.6vw,34px)] bg-bg">
-        <table class="table">
+        <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <thead><tr><th>Параметр</th><th>Стандарт ОТК</th></tr></thead>
           <tbody>
             {standardRows.map((r) => (
               <tr><td>{r.param}</td><td>{r.value}</td></tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
         <Corners />
       </div>
       <div class="flex gap-3 flex-wrap mt-[26px]">

@@ -114,10 +114,10 @@ const jsonLd = JSON.stringify({
   <Hero />
 
   <!-- Photo banner -->
-  <section class="relative border-b border-divider h-[clamp(360px,46vw,620px)] overflow-hidden">
+  <section class="relative border-b border-divider min-h-[clamp(320px,46vw,620px)] overflow-hidden">
     <img src="/img/1728469876516-17a32611eb24.jpg" alt="Современный электромобиль китайского бренда на площадке автопарка" class="absolute inset-0 w-full h-full object-cover block" />
-    <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(12,18,26,0.9) 0%, rgba(12,18,26,0.72) 48%, rgba(12,18,26,0.5) 100%)"></div>
-    <div class="relative max-w-container mx-auto h-full px-[clamp(20px,4vw,56px)] py-[clamp(36px,4.5vw,72px)] flex flex-col justify-end gap-[clamp(20px,2.4vw,32px)]">
+    <div class="absolute inset-0" style="background:linear-gradient(120deg, rgba(12,18,26,0.92) 0%, rgba(12,18,26,0.75) 45%, rgba(12,18,26,0.5) 100%)"></div>
+    <div class="relative max-w-container mx-auto min-h-[clamp(320px,46vw,620px)] px-[clamp(20px,4vw,56px)] py-[clamp(44px,4.5vw,72px)] flex flex-col justify-end gap-[clamp(24px,2.4vw,32px)]">
       <h2 class="m-0 max-w-[22ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] uppercase tracking-[-0.015em]">Более 10 лет на рынке — и только лучшие водители за рулём</h2>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(16px,2vw,32px)] max-w-[900px]">
         {[['300+', 'автомобилей в управлении'], ['24/7', 'диспетчерская служба'], ['15 мин', 'среднее время подачи в центре']].map(([big, small]) => (
@@ -199,14 +199,14 @@ const jsonLd = JSON.stringify({
           <span class="font-heading text-[13px] tracking-[0.12em] uppercase">Автомобили на линии</span>
           <span class="text-xs text-text/[0.55]">сегодня, 09:42</span>
         </div>
-        <table class="table">
+        <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <thead><tr><th>Борт</th><th>Маршрут</th><th>Водитель</th><th>Статус</th></tr></thead>
           <tbody>
             {tmsRows.map((r) => (
               <tr><td>{r.board}</td><td>{r.route}</td><td>{r.driver}</td><td><span class={`tag ${r.tag}`}>{r.status}</span></td></tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
         <div class="mt-3.5 text-xs text-text/[0.55]">Схематичное представление интерфейса TMS ОТК</div>
         <Corners />
       </div>

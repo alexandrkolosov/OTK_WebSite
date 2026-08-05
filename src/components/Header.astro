@@ -16,28 +16,96 @@ const links = [
 ];
 ---
 <header class="sticky top-0 z-[60] bg-bg/90 backdrop-blur-[10px] border-b border-divider">
-  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-4 min-h-[82px] flex items-center gap-[clamp(14px,2.4vw,34px)] flex-wrap">
+  <div class="max-w-container mx-auto px-[clamp(16px,4vw,56px)] py-3 lg:py-4 min-h-[58px] lg:min-h-[82px] flex items-center gap-[clamp(14px,2.4vw,34px)]">
     <a href="/" aria-label="ОТК — на главную" class="flex items-center leading-[0]">
-      <Logo variant="header" width={100} height={30} />
+      <Logo variant="header" width={92} height={28} />
     </a>
-    <nav aria-label="Основная навигация" class="flex items-center gap-[clamp(12px,1.7vw,26px)] flex-wrap mr-auto">
+
+    <!-- Desktop nav (lg and up) -->
+    <div class="hidden lg:flex flex-1 items-center gap-[clamp(14px,2.4vw,34px)]">
+      <nav aria-label="Основная навигация" class="flex items-center gap-[clamp(12px,1.7vw,26px)] mr-auto">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            aria-current={active === l.key ? 'page' : undefined}
+            class="font-heading font-semibold text-sm tracking-[0.07em] uppercase text-text no-underline hover:text-accent aria-[current=page]:text-accent"
+          >{l.label}</a>
+        ))}
+      </nav>
+      <a href="tel:+74957874095" class="font-heading font-semibold text-[17px] tracking-[0.02em] text-text no-underline whitespace-nowrap">+7 (495) 787-40-95</a>
+      <a
+        class="btn btn-primary blueprint min-h-[44px] px-[18px] tracking-[0.06em] uppercase whitespace-nowrap"
+        href="https://t.me/otktrans"
+        target="_blank"
+        rel="noopener"
+      >
+        Написать в Telegram
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </a>
+    </div>
+
+    <!-- Hamburger (below lg) -->
+    <button
+      id="menu-btn"
+      type="button"
+      class="lg:hidden ml-auto -mr-1.5 grid place-items-center w-11 h-11 text-text"
+      aria-label="Открыть меню"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <svg data-icon="open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg data-icon="close" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel (below lg) -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-divider bg-bg/95 backdrop-blur-[10px]">
+    <nav aria-label="Мобильная навигация" class="max-w-container mx-auto px-[clamp(16px,4vw,56px)] py-2 flex flex-col">
       {links.map((l) => (
         <a
           href={l.href}
           aria-current={active === l.key ? 'page' : undefined}
-          class="font-heading font-semibold text-sm tracking-[0.07em] uppercase text-text no-underline hover:text-accent aria-[current=page]:text-accent"
+          class="font-heading font-semibold text-[15px] tracking-[0.07em] uppercase text-text no-underline py-3.5 border-b border-divider hover:text-accent aria-[current=page]:text-accent"
         >{l.label}</a>
       ))}
+      <div class="flex flex-col gap-3 py-4">
+        <a href="tel:+74957874095" class="font-heading font-semibold text-[20px] tracking-[0.02em] text-text no-underline">+7 (495) 787-40-95</a>
+        <a
+          class="btn btn-primary blueprint btn-block min-h-[48px] tracking-[0.06em] uppercase"
+          href="https://t.me/otktrans"
+          target="_blank"
+          rel="noopener"
+        >
+          Написать в Telegram
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        </a>
+      </div>
     </nav>
-    <a href="tel:+74957874095" class="font-heading font-semibold text-[17px] tracking-[0.02em] text-text no-underline whitespace-nowrap">+7 (495) 787-40-95</a>
-    <a
-      class="btn btn-primary blueprint min-h-[44px] px-[18px] tracking-[0.06em] uppercase whitespace-nowrap"
-      href="https://t.me/otktrans"
-      target="_blank"
-      rel="noopener"
-    >
-      Написать в Telegram
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-    </a>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = btn?.querySelector('[data-icon="open"]');
+  const iconClose = btn?.querySelector('[data-icon="close"]');
+
+  const setOpen = (open: boolean) => {
+    if (!btn || !menu) return;
+    menu.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+  };
+
+  btn?.addEventListener('click', () => setOpen(menu?.classList.contains('hidden') ?? true));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  // Reset when crossing into desktop layout.
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+</script>

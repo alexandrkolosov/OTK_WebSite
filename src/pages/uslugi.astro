@@ -174,13 +174,13 @@ const jsonLd = JSON.stringify({
             </div>
           )}
           <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] pb-3 border-b border-divider mb-3.5">Условия</div>
-          <table class="table">
+          <div class="overflow-x-auto"><table class="table min-w-[440px]">
             <tbody>
               {s.conditions.map(([label, value]) => (
                 <tr><td class="text-text/[0.6]">{label}</td><td>{value}</td></tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
           <Corners />
         </div>
       </div>
@@ -211,14 +211,14 @@ const jsonLd = JSON.stringify({
     <div class="max-w-container mx-auto py-[clamp(68px,8.5vw,120px)] px-[clamp(20px,4vw,56px)]">
       <h2 class="text-[clamp(26px,3vw,40px)] uppercase tracking-[-0.015em] m-0 mb-5">Как формируется стоимость</h2>
       <div class="blueprint p-[clamp(24px,2.6vw,34px)]">
-        <table class="table">
+        <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <thead><tr><th>Параметр</th><th>Что учитывается</th><th>Влияние на цену</th></tr></thead>
           <tbody>
             {priceRows.map(([param, what, impact]) => (
               <tr><td>{param}</td><td>{what}</td><td>{impact}</td></tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
         <Corners />
       </div>
       <p class="mt-[18px] mb-0 text-[14px] text-text/[0.6]">Точную ставку считаем по вашей маршрутной программе. Пришлите список маршрутов — вернёмся с расчётом за один рабочий день.</p>
