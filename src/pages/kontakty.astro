@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Corners from '../components/Corners.astro';
+
+const gridBg =
+  'background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px';
+
+const faqLeft = [
+  { q: 'Каким автопарком вы располагаете?', a: 'В автопарке представлены лучшие мировые бренды: от представительского класса Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai, а также минивэны и микроавтобусы. Возраст автомобилей на линии — до 5 лет, парк расширяем под требования клиента.' },
+  { q: 'Как заключается договор?', a: 'По итогам переговоров или по результатам конкурса и аукциона. Собственная юридическая служба готовит договор в кратчайшие сроки, после подписания мы приступаем к обслуживанию.' },
+  { q: 'Возможен ли долгосрочный договор?', a: 'Да, на любой срок обслуживания — 12, 24, 36 месяцев и более, с фиксацией ставки на период договора.' },
+  { q: 'Как организована работа закреплённого водителя?', a: 'Автомобиль с водителем предоставляется на условиях договора: время и адрес подачи, продолжительность обслуживания. Операционный блок строит логистику и сопровождает ежедневные процессы — перевозку сотрудников и корреспонденции.' },
+];
+const faqRight = [
+  { q: 'Проходят ли водители медосмотр, а автомобили — санобработку?', a: 'Да. Водители проходят предрейсовые и послерейсовые осмотры и регулярное медицинское освидетельствование. Автомобили проходят плановое ТО, ежедневную уборку и санитарную обработку салона.' },
+  { q: 'Кто пользуется вашими услугами?', a: 'Банки, государственные корпорации, акционерные общества, производственные и торговые компании, а также средний бизнес.' },
+  { q: 'Какие есть варианты оплаты?', a: 'Все расчёты — безналичные, по договору с юридическим лицом. Ежемесячно предоставляем акт, счёт-фактуру и детализированный отчёт по поездкам.' },
+  { q: 'Где осуществляются транспортные услуги?', a: 'В Москве и Московской области, а также в других крупных городах России. Для компаний с филиалами оформляем единый договор на все города присутствия.' },
+];
+
+const requisites = [
+  ['Наименование', 'ООО «ОТК»'],
+  ['Юридический адрес', '105120, г. Москва, Костомаровский переулок, д. 3, стр. 4, офис 26'],
+  ['ИНН / КПП', 'указать'],
+  ['ОГРН', 'указать'],
+  ['Банковские реквизиты', 'предоставляются по запросу'],
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Каким автопарком располагает ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'В автопарке ОТК представлены лучшие мировые бренды: от представительского класса Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai, а также минивэны и микроавтобусы. Возраст автомобилей на линии — до 5 лет.' } },
+    { '@type': 'Question', name: 'Как заключается договор с ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'Договор заключается по итогам переговоров либо по результатам конкурса или аукциона. Собственная юридическая служба готовит документы в кратчайшие сроки, после чего начинается транспортное обслуживание.' } },
+    { '@type': 'Question', name: 'Возможен ли долгосрочный договор?', acceptedAnswer: { '@type': 'Answer', text: 'Да, ОТК заключает договоры на любой срок, в том числе на 12, 24 и 36 месяцев и более, с фиксацией ставки на период обслуживания.' } },
+    { '@type': 'Question', name: 'Проходят ли водители медосмотр?', acceptedAnswer: { '@type': 'Answer', text: 'Да. Водители проходят предрейсовые и послерейсовые медицинские осмотры и регулярное медицинское освидетельствование, автомобили — плановое техническое обслуживание и санитарную обработку салона.' } },
+    { '@type': 'Question', name: 'Кто пользуется услугами ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'Банки, государственные корпорации, акционерные общества, производственные и торговые компании, а также средний бизнес.' } },
+    { '@type': 'Question', name: 'В каких городах работает ОТК?', acceptedAnswer: { '@type': 'Answer', text: 'Москва и Московская область — основная зона обслуживания. Компания также работает в крупнейших городах России, объединяя филиалы клиента в один договор.' } },
+  ],
+});
+---
+<BaseLayout
+  title="Контакты ОТК — заявка на корпоративное транспортное обслуживание"
+  description="Контакты ОТК: +7 (495) 787-40-95, info@otktrans.ru, Москва, Костомаровский переулок, д. 3, стр. 4, офис 26. Заявка на расчёт транспортного обслуживания, WhatsApp и Telegram, ответы на частые вопросы."
+  path="/kontakty/"
+  active="contacts"
+  jsonLd={jsonLd}
+>
+  <!-- Hero + form -->
+  <section class="border-b border-divider" style={gridBg}>
+    <div class="max-w-container mx-auto px-[clamp(16px,3vw,40px)] pt-[clamp(40px,5vw,80px)] pb-[clamp(44px,5vw,72px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(28px,3.5vw,56px)] items-start">
+      <div>
+        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Контакты</div>
+        <h1 class="text-[clamp(34px,4.6vw,60px)] leading-[1.03] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[16ch]">Расскажите задачу — вернёмся с расчётом</h1>
+        <p class="text-[17px] leading-[1.6] max-w-[50ch] text-text/[0.78] m-0 mb-7">Быстрее всего — написать в мессенджер: отвечаем в течение 15 минут в рабочее время. Расчёт по маршрутной программе готовим за один рабочий день.</p>
+        <div class="flex gap-3 flex-wrap mb-8">
+          <a class="btn btn-primary blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram<Corners /></a>
+          <a class="btn btn-secondary min-h-[52px] px-[26px] tracking-[0.07em] uppercase" href="tel:+74957874095">Позвонить</a>
+        </div>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 border-t border-divider pt-6">
+          <div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Телефон</div>
+            <a href="tel:+74957874095" class="font-heading text-[24px] text-text no-underline">+7 (495) 787-40-95</a>
+            <div class="text-[13px] text-text/[0.6] mt-1">Пн–Пт 9:00–19:00, диспетчерская 24/7</div>
+          </div>
+          <div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Почта</div>
+            <a href="mailto:info@otktrans.ru" class="font-heading text-[24px] text-text no-underline">info@otktrans.ru</a>
+            <div class="text-[13px] text-text/[0.6] mt-1">Заявки, документы, тендерная документация</div>
+          </div>
+          <div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Офис</div>
+            <div class="text-[15px] leading-[1.6]">105120, Москва,<br>Костомаровский переулок,<br>д. 3, стр. 4, офис 26</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blueprint p-[clamp(22px,2.4vw,34px)] bg-bg">
+        <!-- Form state -->
+        <div id="lead-form-wrap">
+          <h2 class="text-[26px] uppercase m-0 mb-1.5">Заявка на расчёт</h2>
+          <p class="text-sm text-text/[0.65] m-0 mb-5">Заполните форму — менеджер свяжется с вами в ближайшее время.</p>
+          <form id="lead-form" class="flex flex-col gap-3.5" novalidate>
+            <div class="field"><label for="f-name">Имя и фамилия</label><input class="input" id="f-name" name="name" type="text" required placeholder="Иван Иванов" /></div>
+            <div class="field"><label for="f-company">Компания</label><input class="input" id="f-company" name="company" type="text" placeholder="ООО «Компания»" /></div>
+            <div class="field"><label for="f-phone">Телефон</label><input class="input" id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" /></div>
+            <div class="field"><label for="f-email">Электронная почта</label><input class="input" id="f-email" name="email" type="email" placeholder="name@company.ru" /></div>
+            <div class="field"><label for="f-task">Задача</label><textarea class="input" id="f-task" name="task" placeholder="Например: 5 автомобилей бизнес-класса с водителями, будни 9:00–19:00, офис в центре Москвы"></textarea></div>
+            <!-- honeypot: hidden from users, bots fill it -->
+            <div aria-hidden="true" class="absolute -left-[9999px] w-px h-px overflow-hidden">
+              <label for="f-website">Не заполняйте это поле</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <p id="lead-error" class="hidden m-0 text-[13px] leading-[1.5] text-danger" role="alert"></p>
+            <button id="lead-submit" class="btn btn-primary blueprint min-h-[52px] tracking-[0.07em] uppercase" type="submit">Отправить заявку<Corners /></button>
+            <p class="m-0 text-xs leading-[1.5] text-text/[0.55]">Нажимая кнопку, вы соглашаетесь с <a href="#privacy" class="text-accent-700">политикой обработки персональных данных</a>.</p>
+          </form>
+        </div>
+        <!-- Sent state -->
+        <div id="lead-sent" class="hidden flex-col gap-3.5 min-h-[320px] justify-center">
+          <h2 class="text-[28px] uppercase m-0">Заявка отправлена</h2>
+          <p class="m-0 text-[15px] leading-[1.65] text-text/[0.75]">Мы получили ваш запрос и свяжемся в ближайшее время. Если вопрос срочный — напишите нам в Telegram, отвечаем быстрее.</p>
+          <div class="flex gap-3 flex-wrap">
+            <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram<Corners /></a>
+            <button id="lead-reset" class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" type="button">Новая заявка</button>
+          </div>
+        </div>
+        <Corners />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(16px,3vw,40px)] py-[clamp(44px,5.5vw,84px)]">
+      <h2 class="text-[clamp(28px,3.4vw,48px)] uppercase tracking-[-0.015em] m-0 mb-7">Вопросы и ответы</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(20px,2.4vw,40px)]">
+        {[faqLeft, faqRight].map((col) => (
+          <div class="flex flex-col gap-6">
+            {col.map((item) => (
+              <div class="border-t border-divider pt-4">
+                <h3 class="text-[20px] m-0 mb-2">{item.q}</h3>
+                <p class="m-0 text-[15px] leading-[1.65] text-text/[0.78]">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requisites + privacy -->
+  <section id="privacy" class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto px-[clamp(16px,3vw,40px)] py-[clamp(40px,5vw,72px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(24px,3vw,48px)]">
+      <div>
+        <h2 class="text-[clamp(22px,2.4vw,32px)] uppercase m-0 mb-3">Реквизиты</h2>
+        <table class="table">
+          <tbody>
+            {requisites.map(([k, v]) => (
+              <tr><td class="text-text/[0.6]">{k}</td><td>{v}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2 class="text-[clamp(22px,2.4vw,32px)] uppercase m-0 mb-3">Обработка персональных данных</h2>
+        <p class="text-[15px] leading-[1.65] text-text/[0.78]">Данные из формы используются только для связи по вашему запросу: подготовки расчёта и коммерческого предложения. Мы не передаём их третьим лицам и не используем для рассылок без согласия.</p>
+        <p class="text-[15px] leading-[1.65] text-text/[0.78]">Чтобы отозвать согласие или удалить данные, напишите на <a href="mailto:info@otktrans.ru" class="text-accent-700">info@otktrans.ru</a>. Полный текст политики публикуется отдельным документом.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  const formWrap = document.getElementById('lead-form-wrap');
+  const sent = document.getElementById('lead-sent');
+  const errEl = document.getElementById('lead-error');
+  const submitBtn = document.getElementById('lead-submit') as HTMLButtonElement | null;
+  const resetBtn = document.getElementById('lead-reset');
+
+  const showSent = (on: boolean) => {
+    formWrap?.classList.toggle('hidden', on);
+    sent?.classList.toggle('hidden', !on);
+    sent?.classList.toggle('flex', on);
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEl?.classList.add('hidden');
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data.name || (!data.phone && !data.email)) {
+      if (errEl) {
+        errEl.textContent = 'Укажите имя и хотя бы один способ связи — телефон или почту.';
+        errEl.classList.remove('hidden');
+      }
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.html = submitBtn.dataset.html || submitBtn.innerHTML;
+      submitBtn.textContent = 'Отправляем…';
+    }
+
+    try {
+      const res = await fetch('/api/contact/', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body.ok) {
+        showSent(true);
+      } else {
+        throw new Error(body.error || 'error');
+      }
+    } catch {
+      if (errEl) {
+        errEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.';
+        errEl.classList.remove('hidden');
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        if (submitBtn.dataset.html) submitBtn.innerHTML = submitBtn.dataset.html;
+      }
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    form?.reset();
+    showSent(false);
+  });
+</script>
