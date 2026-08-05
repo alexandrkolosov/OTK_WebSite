@@ -8,7 +8,7 @@
 ## Стек
 
 - **Astro 5** — статическая генерация страниц (SEO, скорость), плюс один
-  серверный endpoint для формы (адаптер `@astrojs/node`).
+  серверный endpoint для формы (адаптер `@astrojs/vercel`).
 - **Tailwind CSS 3** — вёрстка утилитами поверх токенов дизайн-системы.
 - Barlow / Barlow Condensed (Google Fonts).
 
