@@ -16,6 +16,8 @@ interface Props {
   /** Raw JSON-LD string(s) injected into <script type="application/ld+json">. */
   jsonLd?: string | string[];
   active?: 'services' | 'fleet' | 'cases' | 'about' | 'blog' | 'contacts' | 'home';
+  /** Add <meta name="robots" content="noindex"> (e.g. the 404 page). */
+  noindex?: boolean;
 }
 
 const {
@@ -29,10 +31,14 @@ const {
   ogImage,
   jsonLd,
   active = 'home',
+  noindex = false,
 } = Astro.props;
 
 const origin = 'https://otktrans.ru';
 const canonical = new URL(path, origin).href;
+// Absolute OG image URL (social crawlers require absolute URLs). Defaults to a
+// representative photo; any page may override via the `ogImage` prop.
+const ogImageUrl = new URL(ogImage ?? '/img/1728469876516-17a32611eb24.jpg', origin).href;
 const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!DOCTYPE html>
@@ -40,15 +46,26 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#5980a6" />
   <title>{title}</title>
   <meta name="description" content={description} />
   {keywords && <meta name="keywords" content={keywords} />}
+  {noindex && <meta name="robots" content="noindex" />}
   <link rel="canonical" href={canonical} />
   <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="ОТК" />
+  <meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content={ogTitle ?? title} />
   <meta property="og:description" content={ogDescription ?? description} />
   <meta property="og:url" content={canonical} />
-  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:alt" content={ogTitle ?? title} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle ?? title} />
+  <meta name="twitter:description" content={ogDescription ?? description} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" />

@@ -139,7 +139,7 @@ const industries = [
         {industries.map((ind) => (
           <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
             <span class="font-heading text-[13px] text-accent">{ind.n}</span>
-            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase">{ind.title}</span>
+            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
             <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
           </div>
         ))}

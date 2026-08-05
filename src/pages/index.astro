@@ -118,7 +118,7 @@ const jsonLd = JSON.stringify({
     <img src="/img/1728469876516-17a32611eb24.jpg" alt="Современный электромобиль китайского бренда на площадке автопарка" class="absolute inset-0 w-full h-full object-cover block" />
     <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(12,18,26,0.9) 0%, rgba(12,18,26,0.72) 48%, rgba(12,18,26,0.5) 100%)"></div>
     <div class="relative max-w-container mx-auto h-full px-[clamp(20px,4vw,56px)] py-[clamp(36px,4.5vw,72px)] flex flex-col justify-end gap-[clamp(20px,2.4vw,32px)]">
-      <h2 class="m-0 max-w-[18ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] uppercase tracking-[-0.015em]">Машины выходят на линию каждый день в 6:00</h2>
+      <h2 class="m-0 max-w-[22ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] uppercase tracking-[-0.015em]">Более 10 лет на рынке — и только лучшие водители за рулём</h2>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(16px,2vw,32px)] max-w-[900px]">
         {[['300+', 'автомобилей в управлении'], ['24/7', 'диспетчерская служба'], ['15 мин', 'среднее время подачи в центре']].map(([big, small]) => (
           <div class="border-t border-[#f2f2f359] pt-3">
@@ -221,7 +221,7 @@ const jsonLd = JSON.stringify({
         {industries.map((ind) => (
           <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
             <span class="font-heading text-[13px] text-accent">{ind.n}</span>
-            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase">{ind.title}</span>
+            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
             <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
           </div>
         ))}
