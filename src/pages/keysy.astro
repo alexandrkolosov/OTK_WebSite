@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Corners from '../components/Corners.astro';
+
+const cases = [
+  {
+    tag: 'Банк из топ-20 · 40 автомобилей',
+    title: 'Отказ от собственного автопарка',
+    paras: [
+      { label: 'Задача.', text: 'Содержание своего парка и штата водителей обходилось дороже рынка, а загрузка машин была неравномерной: часть простаивала, часть работала на износ.' },
+      { label: 'Решение.', text: 'Провели аудит маршрутов, объединили пересекающиеся рейсы, перевели офисные разъезды на корпоративное такси, а регулярные маршруты — на закреплённые автомобили с водителями.' },
+      { label: 'Результат.', text: 'Транспортные расходы снизились на 23% за первый год, а кадровый и технический блок перестал заниматься автопарком.' },
+    ],
+    stats: [
+      { big: '−23%', small: 'транспортных расходов' },
+      { big: '40', small: 'автомобилей на обслуживании' },
+      { big: '1', small: 'договор вместо штата водителей' },
+      { big: '3 нед.', small: 'на полный переход' },
+    ],
+  },
+  {
+    tag: 'Госкорпорация · 200+ поездок в день',
+    title: 'Обслуживание по 223-ФЗ без сбоев',
+    paras: [
+      { label: 'Задача.', text: 'Обеспечить перевозку сотрудников и корреспонденции по закрытым маршрутам с жёсткими требованиями к документам, допускам и срокам подачи.' },
+      { label: 'Решение.', text: 'Выиграли конкурс, согласовали состав водителей со службой безопасности заказчика, подключили ГЛОНАСС-контроль и ежедневную отчётность по каждому маршруту.' },
+      { label: 'Результат.', text: '99,4% поездок подано вовремя за год обслуживания, договор продлён на новый срок.' },
+    ],
+    stats: [
+      { big: '99,4%', small: 'поездок вовремя' },
+      { big: '200+', small: 'поездок ежедневно' },
+      { big: '223-ФЗ', small: 'закупочная процедура' },
+      { big: '24/7', small: 'диспетчерское сопровождение' },
+    ],
+  },
+  {
+    tag: 'Производственный холдинг · 12 филиалов',
+    title: 'Единый стандарт транспорта в регионах',
+    paras: [
+      { label: 'Задача.', text: 'В каждом городе присутствия был свой перевозчик, свой уровень сервиса и свой формат отчётности — сводить расходы приходилось вручную.' },
+      { label: 'Решение.', text: 'Заключили один рамочный договор, унифицировали классы автомобилей и требования к водителям, подключили филиалы к TMS-платформе ОТК.' },
+      { label: 'Результат.', text: 'Одна сводная отчётность вместо двенадцати и прозрачное сравнение стоимости поездки между филиалами.' },
+    ],
+    stats: [
+      { big: '12', small: 'филиалов в одном договоре' },
+      { big: '1', small: 'сводный отчёт в месяц' },
+      { big: 'TMS', small: 'во всех регионах' },
+      { big: '−15%', small: 'стоимости поездки' },
+    ],
+  },
+];
+
+const testimonials = [
+  { quote: '«Главное изменение — вопросы транспорта перестали доходить до руководства. Машины на месте, отчёт приходит вовремя, спорных ситуаций за два года не было».', cite: 'Директор административного департамента, банк из топ-20' },
+  { quote: '«Работаем по конкурсу, требования жёсткие. ОТК закрывает документы без напоминаний и держит подачу по графику даже в пиковые дни».', cite: 'Руководитель службы закупок, государственная корпорация' },
+];
+
+const industries = [
+  { n: '01', title: 'Банки и финсектор', body: 'Отделения, документооборот, поездки менеджмента' },
+  { n: '02', title: 'Госкорпорации', body: 'Конкурсные процедуры, закрытые маршруты, отчётность' },
+  { n: '03', title: 'Производство', body: 'Развоз смен и обслуживание площадок в регионах' },
+  { n: '04', title: 'Ритейл и дистрибуция', body: 'Логистика документов между складами и офисами' },
+  { n: '05', title: 'Профессиональные услуги', body: 'Поездки к клиентам, встречи, аэропорты' },
+  { n: '06', title: 'Средний бизнес', body: 'Один-два автомобиля с водителем без своего парка' },
+];
+---
+<BaseLayout
+  title="Кейсы ОТК: корпоративное транспортное обслуживание банков и корпораций"
+  description="Кейсы транспортного обслуживания ОТК: банк, госкорпорация, производственный холдинг. Задачи, решения и результаты — сокращение расходов, точность подачи, единая отчётность по филиалам."
+  path="/keysy/"
+  active="cases"
+>
+  <!-- Hero -->
+  <section class="border-b border-divider" style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Кейсы и клиенты</div>
+      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Как выглядит переход на обслуживание ОТК</h1>
+      <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Часть клиентов работает с нами по NDA, поэтому кейсы опубликованы без названий компаний. Отраслевые детали и рекомендации предоставляем по запросу в рамках закупочных процедур.</p>
+    </div>
+  </section>
+
+  <!-- Кейсы -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)] flex flex-col gap-[clamp(28px,3vw,44px)]">
+      {cases.map((c) => (
+        <div class="blueprint p-[clamp(32px,3.2vw,46px)] grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[clamp(28px,3vw,52px)]">
+          <div>
+            <span class="tag tag-outline">{c.tag}</span>
+            <h2 class="text-[clamp(24px,2.6vw,34px)] uppercase mt-4 mb-3">{c.title}</h2>
+            {c.paras.map((p, i) => (
+              <p class={`${i === c.paras.length - 1 ? 'm-0' : 'mb-2.5'} text-[15px] leading-[1.65] text-text/[0.78]`}><strong>{p.label}</strong> {p.text}</p>
+            ))}
+          </div>
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-px bg-bg border border-divider content-start">
+            {c.stats.map((s) => (
+              <div class="bg-bg outline outline-1 outline-divider p-5">
+                <div class="font-heading text-[32px] leading-none">{s.big}</div>
+                <div class="text-xs text-text/[0.6] mt-1.5">{s.small}</div>
+              </div>
+            ))}
+          </div>
+          <Corners />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Фотобаннер -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pb-[clamp(28px,3.5vw,56px)]">
+      <div class="blueprint h-[clamp(220px,28vw,380px)]">
+        <img src="/img/1615563164538-89e1da13fcc4.jpg" alt="Водитель за рулём во время рабочей поездки" loading="lazy" class="w-full h-full object-cover block" />
+        <Corners />
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы клиентов -->
+  <section class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)]">
+      <h2 class="text-[clamp(26px,3vw,42px)] uppercase tracking-[-0.015em] m-0 mb-7">Отзывы клиентов</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(16px,1.8vw,28px)]">
+        {testimonials.map((t) => (
+          <figure class="blueprint p-[clamp(30px,3vw,42px)] bg-bg m-0">
+            <blockquote class="m-0 font-heading text-[clamp(20px,2vw,26px)] leading-[1.25]">{t.quote}</blockquote>
+            <figcaption class="mt-[18px] text-sm text-text/[0.6]">{t.cite}</figcaption>
+            <Corners />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Отрасли и клиенты -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(60px,7vw,100px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] mb-6">Отрасли и клиенты</div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px bg-bg border border-divider">
+        {industries.map((ind) => (
+          <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
+            <span class="font-heading text-[13px] text-accent">{ind.n}</span>
+            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase">{ind.title}</span>
+            <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm text-text/[0.6]">Услугами ОТК пользуются банки, государственные корпорации, акционерные общества, производственные и торговые компании.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-accent-900 text-[#f2f2f3]">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
+      <h2 class="text-[clamp(28px,3.4vw,48px)] uppercase tracking-[-0.015em] m-0 max-w-[20ch]">Запросите рекомендации и расчёт по вашей задаче</h2>
+      <div class="flex gap-3 flex-wrap">
+        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener"><Corners />Telegram</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -5,11 +5,11 @@ import SectionHead from '../components/SectionHead.astro';
 import Corners from '../components/Corners.astro';
 
 const services = [
-  { n: '01', href: '/services#rent', title: 'Автомобиль с водителем', body: 'Закреплённая машина и проверенный водитель под маршрутную программу компании: подача к офису, разъезды, встречи, аэропорты.', accent: false },
-  { n: '02', href: '/services#taxi', title: 'Корпоративное такси', body: 'Поездки сотрудников по заявке или по правилам компании: лимиты, центры затрат, безналичный расчёт и единый отчёт в конце месяца.', accent: false },
-  { n: '03', href: '/services#vip', title: 'Обслуживание первых лиц', body: 'Представительский класс, персональный водитель с опытом работы с руководителями, конфиденциальность и точность до минуты.', accent: false },
-  { n: '04', href: '/services#mail', title: 'Перевозка корреспонденции', body: 'Ежедневные маршруты между офисами, отделениями и контрагентами: документы, ценные пакеты, курьерская логистика по расписанию.', accent: false },
-  { n: '05', href: '/services#tms', title: 'TMS-платформа ОТК', body: 'Собственная система управления автопарком: заявки, маршруты, ГЛОНАСС-трекинг, лимиты и выгрузка отчётов в один клик.', accent: true },
+  { n: '01', href: '/uslugi/#rent', title: 'Автомобиль с водителем', body: 'Закреплённая машина и проверенный водитель под маршрутную программу компании: подача к офису, разъезды, встречи, аэропорты.', accent: false },
+  { n: '02', href: '/uslugi/#taxi', title: 'Корпоративное такси', body: 'Поездки сотрудников по заявке или по правилам компании: лимиты, центры затрат, безналичный расчёт и единый отчёт в конце месяца.', accent: false },
+  { n: '03', href: '/uslugi/#vip', title: 'Обслуживание первых лиц', body: 'Представительский класс, персональный водитель с опытом работы с руководителями, конфиденциальность и точность до минуты.', accent: false },
+  { n: '04', href: '/uslugi/#mail', title: 'Перевозка корреспонденции', body: 'Ежедневные маршруты между офисами, отделениями и контрагентами: документы, ценные пакеты, курьерская логистика по расписанию.', accent: false },
+  { n: '05', href: '/uslugi/#tms', title: 'TMS-платформа ОТК', body: 'Собственная система управления автопарком: заявки, маршруты, ГЛОНАСС-трекинг, лимиты и выгрузка отчётов в один клик.', accent: true },
 ];
 
 const steps = [
@@ -192,7 +192,7 @@ const jsonLd = JSON.stringify({
             <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px]"><span class="text-accent">—</span><span>{li}</span></li>
           ))}
         </ul>
-        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/services#tms">Как устроена платформа<Corners /></a>
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/uslugi/#tms">Как устроена платформа<Corners /></a>
       </div>
       <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style="background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg))">
         <div class="flex justify-between items-baseline pb-3 border-b border-divider mb-3">
@@ -243,7 +243,7 @@ const jsonLd = JSON.stringify({
           </div>
         ))}
       </div>
-      <a class="btn btn-secondary min-h-[48px] mt-[26px] px-6 tracking-[0.07em] uppercase" href="/cases">Все кейсы и отзывы</a>
+      <a class="btn btn-secondary min-h-[48px] mt-[26px] px-6 tracking-[0.07em] uppercase" href="/keysy/">Все кейсы и отзывы</a>
     </div>
   </section>
 
@@ -263,7 +263,7 @@ const jsonLd = JSON.stringify({
           </div>
         ))}
       </div>
-      <a class="btn btn-ghost mt-[26px] tracking-[0.07em] uppercase" href="/contacts#faq">Все вопросы и ответы →</a>
+      <a class="btn btn-ghost mt-[26px] tracking-[0.07em] uppercase" href="/kontakty/#faq">Все вопросы и ответы →</a>
     </div>
   </section>
 
@@ -277,7 +277,7 @@ const jsonLd = JSON.stringify({
       <div class="flex gap-3 flex-wrap">
         <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener"><Corners />Telegram</a>
         <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
-        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/contacts">Форма на сайте</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/kontakty/">Форма на сайте</a>
       </div>
     </div>
   </section>

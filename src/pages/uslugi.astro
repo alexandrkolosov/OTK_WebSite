@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Corners from '../components/Corners.astro';
+
+const accent6 = 'background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))';
+
+const serviceSections = [
+  {
+    id: 'rent',
+    n: '01',
+    title: 'Аренда автомобиля с водителем',
+    desc: 'За компанией закрепляется автомобиль и постоянный водитель, который знает ваши маршруты, регламенты и людей. Формат подходит для ежедневных разъездов, обслуживания офиса, встреч в аэропортах и работы по расписанию.',
+    bullets: [
+      'Смены 8, 10, 12 часов или круглосуточное дежурство',
+      'Подмена автомобиля и водителя в день обращения',
+      'Топливо, мойка, ТО, страхование и налоги — на стороне ОТК',
+      'Путевые листы, предрейсовый медосмотр и контроль выпуска на линию',
+    ],
+    image: { src: '/img/1596032457104-baa1f5f9372a.jpg', alt: 'Водитель в деловом костюме за рулём автомобиля' },
+    sectionStyle: null,
+    cardBg: false,
+    conditions: [
+      ['Класс автомобиля', 'Комфорт · Бизнес · Представительский'],
+      ['Минимальный срок', 'от 1 месяца'],
+      ['График', 'по маршрутной программе клиента'],
+      ['Оплата', 'безналичная, помесячно'],
+      ['Документы', 'договор, акт, счёт-фактура, отчёт по поездкам'],
+    ],
+  },
+  {
+    id: 'taxi',
+    n: '02',
+    title: 'Корпоративное такси',
+    desc: 'Разовые поездки сотрудников без наличных и авансовых отчётов: заявка через координатора или личный кабинет, поездка закрывается в общий счёт компании.',
+    bullets: [
+      'Правила и лимиты по подразделениям, согласование дорогих поездок',
+      'Развоз сотрудников после смены и ночные поездки',
+      'Трансферы в аэропорты и на вокзалы со встречей с табличкой',
+      'Детализация по каждой поездке: сотрудник, маршрут, время, стоимость',
+    ],
+    image: null,
+    sectionStyle: accent6,
+    cardBg: true,
+    conditions: [
+      ['Формат', 'по заявке, 7 дней в неделю'],
+      ['Подача', 'от 20 минут в пределах МКАД'],
+      ['Тарификация', 'по маршруту или по времени'],
+      ['Оплата', 'постоплата по счёту, без наличных'],
+      ['Отчётность', 'ежемесячная выгрузка в Excel'],
+    ],
+  },
+  {
+    id: 'vip',
+    n: '03',
+    title: 'Обслуживание первых лиц',
+    desc: 'Персональный водитель представительского класса для собственника, генерального директора или топ-менеджмента. Отбор водителя согласуется с клиентом, все сотрудники проходят проверку и подписывают соглашение о неразглашении.',
+    bullets: [
+      'Представительский класс: Mercedes, Hongqi, Zeekr. Стаж водителей от 10 лет',
+      'Гибкий график, дежурство вне рабочего времени и по выходным',
+      'Планирование дня совместно с помощником руководителя',
+      'Постоянная подмена того же класса без потери качества сервиса',
+    ],
+    image: null,
+    sectionStyle: null,
+    cardBg: false,
+    conditions: [
+      ['Класс автомобиля', 'Представительский, VIP (Mercedes, Hongqi, Zeekr)'],
+      ['Водитель', 'персональный, согласуется с клиентом'],
+      ['Конфиденциальность', 'NDA, проверка службой безопасности'],
+      ['График', 'по согласованию, включая 24/7'],
+      ['Минимальный срок', 'от 1 месяца'],
+    ],
+  },
+  {
+    id: 'mail',
+    n: '04',
+    title: 'Перевозка корреспонденции',
+    desc: 'Ежедневные закреплённые маршруты между офисами, отделениями, архивом и контрагентами. Документы едут по расписанию, а не «когда получится», и каждая передача фиксируется.',
+    bullets: [
+      'Круговые маршруты 1–3 раза в день по расписанию',
+      'Опись, реестр передачи и подтверждение получения',
+      'Перевозка ценных пакетов и работа с банковской документацией',
+      'Срочные доставки вне маршрута в течение дня',
+    ],
+    image: null,
+    sectionStyle: accent6,
+    cardBg: true,
+    conditions: [
+      ['Формат', 'закреплённый маршрут и водитель'],
+      ['Частота', 'ежедневно или по графику клиента'],
+      ['Зона', 'Москва, область, межгород по согласованию'],
+      ['Контроль', 'ГЛОНАСС-трекинг, реестр передач'],
+      ['Оплата', 'фиксированная стоимость маршрута'],
+    ],
+  },
+];
+
+const tmsCards = [
+  { n: '01', title: 'Заявки и согласование', body: 'Сотрудник оставляет заявку в веб-форме, руководитель согласовывает, координатор видит очередь и свободные машины.' },
+  { n: '02', title: 'Мониторинг ГЛОНАСС', body: 'Положение автомобилей, фактическое время подачи, пробег и простои — в реальном времени и в истории.' },
+  { n: '03', title: 'Бюджет и лимиты', body: 'Центры затрат, лимиты на подразделение и сотрудника, предупреждения о перерасходе до конца месяца.' },
+  { n: '04', title: 'Отчёты и документы', body: 'Выгрузка по поездкам, сотрудникам и подразделениям в Excel, закрывающие документы в конце периода.' },
+];
+
+const priceRows = [
+  ['Класс автомобиля', 'от комфорта до представительского', 'основной фактор'],
+  ['Продолжительность смены', '8 / 10 / 12 / 24 часа', 'прямая зависимость'],
+  ['Количество автомобилей', 'парк от 1 до нескольких десятков', 'объёмная скидка'],
+  ['Срок договора', '12, 24, 36 месяцев и более', 'фиксация ставки'],
+  ['География', 'Москва, область, другие регионы', 'надбавка за межгород'],
+];
+
+const heroNav = [
+  { href: '#rent', label: 'Авто с водителем' },
+  { href: '#taxi', label: 'Корпоративное такси' },
+  { href: '#vip', label: 'Первые лица' },
+  { href: '#mail', label: 'Корреспонденция' },
+  { href: '#tms', label: 'TMS-платформа' },
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Услуги корпоративного транспорта ОТК',
+  itemListElement: [
+    { '@type': 'Service', position: 1, name: 'Аренда автомобиля с водителем', serviceType: 'Корпоративный транспорт', areaServed: 'Москва и Россия', provider: { '@type': 'Organization', name: 'ОТК' } },
+    { '@type': 'Service', position: 2, name: 'Корпоративное такси для сотрудников', serviceType: 'Корпоративное такси', areaServed: 'Москва и Россия', provider: { '@type': 'Organization', name: 'ОТК' } },
+    { '@type': 'Service', position: 3, name: 'Транспортное обслуживание первых лиц', serviceType: 'VIP-транспорт', areaServed: 'Москва', provider: { '@type': 'Organization', name: 'ОТК' } },
+    { '@type': 'Service', position: 4, name: 'Перевозка корреспонденции', serviceType: 'Курьерская логистика', areaServed: 'Москва и область', provider: { '@type': 'Organization', name: 'ОТК' } },
+    { '@type': 'Service', position: 5, name: 'TMS-платформа управления автопарком', serviceType: 'Программное обеспечение', areaServed: 'Россия', provider: { '@type': 'Organization', name: 'ОТК' } },
+  ],
+});
+---
+<BaseLayout
+  title="Услуги ОТК: аренда авто с водителем, корпоративное такси, TMS — Москва"
+  description="Услуги корпоративного транспорта ОТК: аренда автомобиля с водителем, корпоративное такси для сотрудников, обслуживание первых лиц, перевозка корреспонденции, TMS-платформа управления автопарком. Безналичный расчёт, договор от 12 месяцев."
+  path="/uslugi/"
+  active="services"
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="border-b border-divider" style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px">
+    <div class="max-w-container mx-auto py-[clamp(64px,8vw,112px)] px-[clamp(20px,4vw,56px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Услуги</div>
+      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[18ch]">Транспортные услуги для юридических лиц</h1>
+      <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Пять форматов обслуживания, которые собираются в одну маршрутную программу и один договор. Ниже — что входит в каждый, как считается стоимость и какие документы вы получаете.</p>
+      <div class="flex gap-2.5 flex-wrap mt-[26px]">
+        {heroNav.map((b) => (
+          <a class="btn btn-secondary min-h-[44px] tracking-[0.06em] uppercase" href={b.href}>{b.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 01–04 · Форматы обслуживания -->
+  {serviceSections.map((s) => (
+    <section id={s.id} class="border-b border-divider" style={s.sectionStyle ?? undefined}>
+      <div class="max-w-container mx-auto py-[clamp(68px,8.5vw,120px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-start">
+        <div>
+          <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">{s.n}</span>
+          <h2 class="text-[clamp(28px,3.4vw,46px)] uppercase tracking-[-0.015em] mt-3 mb-4">{s.title}</h2>
+          <p class="text-base leading-[1.65] max-w-[52ch] text-text/[0.78]">{s.desc}</p>
+          <ul class="list-none p-0 mt-5 mb-0 flex flex-col gap-[11px]">
+            {s.bullets.map((li) => (
+              <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px]"><span class="text-accent">—</span><span>{li}</span></li>
+            ))}
+          </ul>
+        </div>
+        <div class={`blueprint p-[clamp(28px,2.8vw,38px)] ${s.cardBg ? 'bg-bg' : ''}`}>
+          {s.image && (
+            <div class="h-[190px] border border-divider mb-[18px]">
+              <img src={s.image.src} alt={s.image.alt} loading="lazy" class="w-full h-full object-cover block" />
+            </div>
+          )}
+          <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] pb-3 border-b border-divider mb-3.5">Условия</div>
+          <table class="table">
+            <tbody>
+              {s.conditions.map(([label, value]) => (
+                <tr><td class="text-text/[0.6]">{label}</td><td>{value}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <Corners />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- 05 · TMS -->
+  <section id="tms" class="border-b border-divider">
+    <div class="max-w-container mx-auto py-[clamp(68px,8.5vw,120px)] px-[clamp(20px,4vw,56px)]">
+      <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">05</span>
+      <h2 class="text-[clamp(28px,3.4vw,46px)] uppercase tracking-[-0.015em] mt-3 mb-4 max-w-[22ch]">TMS-платформа управления автопарком</h2>
+      <p class="text-base leading-[1.65] max-w-[62ch] text-text/[0.78] m-0 mb-8">Система ОТК закрывает весь цикл: заявка — назначение автомобиля — исполнение — отчёт. Подключается вместе с обслуживанием, отдельная интеграция и обучение сотрудников не требуются.</p>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {tmsCards.map((c) => (
+          <div class="blueprint p-[clamp(28px,2.8vw,38px)]">
+            <div class="font-heading text-[36px] leading-none text-accent-300">{c.n}</div>
+            <h3 class="text-[19px] uppercase mt-3 mb-2">{c.title}</h3>
+            <p class="m-0 text-[14px] leading-[1.6] text-text/[0.72]">{c.body}</p>
+            <Corners />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Как формируется стоимость -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto py-[clamp(68px,8.5vw,120px)] px-[clamp(20px,4vw,56px)]">
+      <h2 class="text-[clamp(26px,3vw,40px)] uppercase tracking-[-0.015em] m-0 mb-5">Как формируется стоимость</h2>
+      <div class="blueprint p-[clamp(24px,2.6vw,34px)]">
+        <table class="table">
+          <thead><tr><th>Параметр</th><th>Что учитывается</th><th>Влияние на цену</th></tr></thead>
+          <tbody>
+            {priceRows.map(([param, what, impact]) => (
+              <tr><td>{param}</td><td>{what}</td><td>{impact}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <Corners />
+      </div>
+      <p class="mt-[18px] mb-0 text-[14px] text-text/[0.6]">Точную ставку считаем по вашей маршрутной программе. Пришлите список маршрутов — вернёмся с расчётом за один рабочий день.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-accent-900 text-[#f2f2f3]">
+    <div class="max-w-container mx-auto py-[clamp(68px,8.5vw,120px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
+      <h2 class="text-[clamp(28px,3.4vw,48px)] uppercase tracking-[-0.015em] m-0 max-w-[18ch]">Соберём обслуживание под вашу задачу</h2>
+      <div class="flex gap-3 flex-wrap">
+        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener"><Corners />Telegram</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/kontakty/">Форма на сайте</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

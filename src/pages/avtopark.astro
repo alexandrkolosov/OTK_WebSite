@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Corners from '../components/Corners.astro';
+
+const classes = [
+  { img: '/img/1606400142640-69e81d222bcb.jpg', alt: 'Седан на городской дороге', tag: 'tag-neutral', tagLabel: 'Эконом', title: 'Городские разъезды', body: 'Доставка корреспонденции, поездки сотрудников по офисным маршрутам, курьерская логистика.', brands: 'Lada · Chery · Geely · Hyundai', accent: false },
+  { img: '/img/1542114123-e4041abffdfa.jpg', alt: 'Чёрный седан, припаркованный на площадке', tag: 'tag-neutral', tagLabel: 'Комфорт', title: 'Ежедневное закрепление', body: 'Автомобиль за подразделением, встречи, регулярные поездки менеджмента среднего звена.', brands: 'Volkswagen · Toyota · Hyundai · Geely', accent: false },
+  { img: '/img/1565534241980-f17add96b7d8.jpg', alt: 'Тёмный седан бизнес-класса, вид спереди', tag: 'tag-accent', tagLabel: 'Бизнес', title: 'Руководители направлений', body: 'Встречи с партнёрами, трансферы в аэропорты, поездки с сопровождением по городу.', brands: 'Toyota · Zeekr · Volkswagen', accent: false },
+  { img: '/img/1583668925503-7fcc6606934c.jpg', alt: 'Чёрный автомобиль представительского класса в движении', tag: 'tag-accent', tagLabel: 'Представительский', title: 'Топ-менеджмент и делегации', body: 'Приём гостей компании, официальные визиты, представительские поездки в течение дня.', brands: 'Mercedes · Hongqi · Zeekr', accent: false },
+  { img: '/img/1750210505999-405a26beb59d.jpg', alt: 'Открытая дверь автомобиля: салон, подготовленный к посадке пассажира', tag: 'tag-outline', tagLabel: 'VIP', title: 'Первые лица компании', body: 'Персональный водитель, конфиденциальность, работа по графику руководителя.', brands: 'Mercedes · Hongqi', accent: true },
+  { img: '/img/1535655685871-dc8158ff167e.jpg', alt: 'Микроавтобус Mercedes-Benz Sprinter на площадке перед выездом', tag: 'tag-neutral', tagLabel: 'Группы', title: 'Минивэны и микроавтобусы', body: 'Развоз смен, перевозка команд и выездные мероприятия — от 6 до 19 посадочных мест.', brands: 'Подбираем модель под маршрут', accent: false },
+];
+
+const brands = ['Hongqi', 'Zeekr', 'Mercedes', 'Volkswagen', 'Toyota', 'Hyundai', 'Geely', 'Chery', 'Lada'];
+
+const standardRows = [
+  { param: 'Возраст автомобиля', value: 'до 5 лет на линии' },
+  { param: 'Техническое обслуживание', value: 'плановое ТО по регламенту производителя, штатные механики' },
+  { param: 'Контроль выпуска на линию', value: 'ежедневный осмотр и отметка механика' },
+  { param: 'Мониторинг', value: 'ГЛОНАСС на каждом автомобиле' },
+  { param: 'Страхование', value: 'ОСАГО, КАСКО, страхование ответственности перед пассажирами' },
+  { param: 'Чистота салона', value: 'ежедневная уборка, плановая санобработка' },
+  { param: 'Подмена', value: 'резервные автомобили и водители, замена в день обращения' },
+];
+---
+<BaseLayout
+  title="Автопарк ОТК: классы автомобилей и бренды для корпоративного обслуживания"
+  description="Автопарк ОТК: лучшие мировые бренды от представительских Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai. Пять классов, регулярное ТО, ГЛОНАСС, страхование, подмена без простоя."
+  path="/avtopark/"
+  active="fleet"
+>
+  <!-- Hero -->
+  <section class="border-b border-divider" style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-center">
+      <div>
+        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Автопарк</div>
+        <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[18ch]">Лучшие мировые бренды в одном автопарке</h1>
+        <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[56ch] text-text/[0.78] m-0">В автопарке ОТК представлены автомобили ведущих мировых производителей — от представительского класса Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai. Класс и марку подбираем под задачу и бюджет клиента, при необходимости закупаем автомобили под договор.</p>
+      </div>
+      <div class="blueprint h-[clamp(240px,26vw,340px)]">
+        <img src="/img/1551432615-469d73f41b97.jpg" alt="Чёрный автомобиль бизнес-класса, вид сбоку" loading="lazy" class="w-full h-full object-cover block" />
+        <Corners />
+      </div>
+    </div>
+  </section>
+
+  <!-- Классы -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)]">
+      <div class="flex items-baseline gap-5 flex-wrap mb-[clamp(36px,4vw,60px)]">
+        <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">Классы</span>
+        <h2 class="text-[clamp(28px,3.4vw,46px)] uppercase tracking-[-0.015em] m-0">Пять классов под разные задачи</h2>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {classes.map((c) => (
+          <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style={c.accent ? 'border-color:var(--color-accent)' : undefined}>
+            <div class="h-[170px] border border-divider mb-[18px]">
+              <img src={c.img} alt={c.alt} loading="lazy" class="w-full h-full object-cover block" />
+            </div>
+            <span class={`tag ${c.tag}`}>{c.tagLabel}</span>
+            <h3 class="text-[23px] uppercase mt-3.5 mb-2.5">{c.title}</h3>
+            <p class="mt-0 mb-3.5 text-sm leading-[1.6] text-text/[0.72]">{c.body}</p>
+            <div class="text-[13px] text-accent-700">{c.brands}</div>
+            <Corners />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Марки в парке -->
+  <section class="border-b border-divider bg-accent-900 text-[#f2f2f3]">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(60px,7vw,100px)]">
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-300 mb-[22px]">Марки в парке</div>
+      <div class="flex flex-wrap gap-[clamp(16px,2.4vw,40px)] font-heading text-[clamp(22px,2.6vw,38px)] uppercase leading-[1.1]">
+        {brands.map((b) => (<span>{b}</span>))}
+      </div>
+      <p class="mt-[26px] mb-0 text-[15px] leading-[1.6] max-w-[60ch] text-[#f2f2f3bf]">Состав парка обновляется под задачи клиентов: нужной марки нет — подберём или закупим автомобиль к запуску договора.</p>
+    </div>
+  </section>
+
+  <!-- Стандарт обслуживания парка -->
+  <section class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(68px,8.5vw,120px)]">
+      <h2 class="text-[clamp(26px,3vw,42px)] uppercase tracking-[-0.015em] m-0 mb-6">Стандарт обслуживания парка</h2>
+      <div class="blueprint p-[clamp(24px,2.6vw,34px)] bg-bg">
+        <table class="table">
+          <thead><tr><th>Параметр</th><th>Стандарт ОТК</th></tr></thead>
+          <tbody>
+            {standardRows.map((r) => (
+              <tr><td>{r.param}</td><td>{r.value}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <Corners />
+      </div>
+      <div class="flex gap-3 flex-wrap mt-[26px]">
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Подобрать автомобиль в Telegram<Corners /></a>
+        <a class="btn btn-secondary min-h-[48px] px-6 tracking-[0.06em] uppercase" href="/kontakty/">Оставить заявку</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
