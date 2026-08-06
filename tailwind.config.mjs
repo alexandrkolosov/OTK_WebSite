@@ -53,9 +53,9 @@ export default {
         body: ['"Barlow"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
-        ds: '12px',
-        'ds-sm': '8px',
-        'ds-lg': '16px',
+        ds: '14px',
+        'ds-sm': '10px',
+        'ds-lg': '20px',
       },
       boxShadow: {
         'ds-sm': '0 1px 2px color-mix(in srgb, #1d2d3d 6%, transparent), 0 1px 3px color-mix(in srgb, #1d2d3d 5%, transparent)',

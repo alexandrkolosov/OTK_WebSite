@@ -1,42 +1,36 @@
 ---
-// Landing hero, variant A — headline + company "spec sheet" plate on a soft
-// accent glow.
+// Landing hero — Apple-style centered composition: eyebrow, large headline,
+// subhead, CTAs, then a quiet full-width stat strip. Soft accent glow ground.
 const heroBg =
-  'background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)';
+  'background:radial-gradient(1200px 720px at 50% -24%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent 60%), radial-gradient(900px 520px at 86% 6%, color-mix(in srgb, var(--color-accent-2) 8%, transparent), transparent 62%), var(--color-bg)';
 
 const specs = [
-  { n: '01', title: 'Более 10 лет', sub: 'на рынке корпоративных перевозок' },
-  { n: '02', title: '150+ сотрудников', sub: 'водители, логисты, диспетчеры, механики в штате' },
-  { n: '03', title: 'Тысячи маршрутов', sub: 'выполняются ежедневно по всей стране' },
-  { n: '04', title: 'Вся Россия', sub: 'Москва, область и крупнейшие города страны' },
+  { title: 'Более 10 лет', sub: 'на рынке корпоративных перевозок' },
+  { title: '150+ сотрудников', sub: 'водители, логисты, диспетчеры, механики в штате' },
+  { title: 'Тысячи маршрутов', sub: 'выполняются ежедневно по всей стране' },
+  { title: 'Вся Россия', sub: 'Москва, область и крупнейшие города страны' },
 ];
 ---
-<section class="border-b border-divider" style={heroBg}>
-  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)] grid grid-cols-[repeat(auto-fit,minmax(340px,1fr))] gap-[clamp(32px,4vw,64px)] items-start">
-    <div>
-      <div class="font-heading text-[13px] tracking-[0.14em] uppercase text-accent-700 mb-5">Корпоративный транспорт · Москва и регионы России</div>
-      <h1 class="text-[clamp(40px,5.4vw,74px)] leading-[1.02] tracking-[-0.02em] m-0 mb-[22px] max-w-[16ch] [text-wrap:balance]">Транспортное обслуживание бизнеса под ключ</h1>
-      <p class="text-[clamp(16px,1.35vw,19px)] leading-[1.6] max-w-[52ch] text-text/[0.78] m-0 mb-7 [text-wrap:pretty]">Автомобили с водителями, корпоративное такси, доставка корреспонденции и собственная TMS-платформа для контроля поездок и расходов. Договор, закрывающие документы и безналичный расчёт.</p>
-      <div class="flex gap-3 flex-wrap mb-4">
-        <a class="btn btn-primary blueprint min-h-[52px] px-[26px] text-[15px] tracking-[0.07em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
-        <a class="btn btn-secondary min-h-[52px] px-[26px] text-[15px] tracking-[0.07em]" href="tel:+74957874095">Позвонить</a>
-      </div>
-      <p class="m-0 text-sm text-text/[0.55]">Отвечаем в течение 15 минут в рабочее время. Расчёт по вашей маршрутной программе — за один день.</p>
+<section class="relative border-b border-divider overflow-hidden" style={heroBg}>
+  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(76px,11vw,152px)] pb-[clamp(56px,7vw,104px)] flex flex-col items-center text-center">
+    <div class="font-heading text-[13px] tracking-[0.14em] uppercase text-accent-700 mb-6">Корпоративный транспорт · Москва и регионы России</div>
+    <h1 class="text-[clamp(44px,6.6vw,88px)] leading-[1.02] tracking-[-0.03em] font-heading m-0 max-w-[15ch] [text-wrap:balance]">Транспортное обслуживание бизнеса под ключ</h1>
+    <p class="mt-7 text-[clamp(17px,1.5vw,21px)] leading-[1.55] max-w-[58ch] text-text/[0.72] [text-wrap:pretty]">Автомобили с водителями, корпоративное такси, доставка корреспонденции и собственная TMS-платформа для контроля поездок и расходов. Договор, закрывающие документы и безналичный расчёт.</p>
+    <div class="mt-9 flex gap-3 flex-wrap justify-center">
+      <a class="btn btn-primary min-h-[54px] px-[30px] text-[15px]" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn btn-secondary min-h-[54px] px-[30px] text-[15px]" href="tel:+74957874095">Позвонить</a>
     </div>
-    <div class="blueprint p-[clamp(20px,2.4vw,32px)] bg-bg/[0.82]">
-      <div class="font-heading text-xs tracking-[0.14em] uppercase text-text/[0.55] pb-[14px] border-b border-divider">Спецификация компании</div>
-      <div class="flex flex-col">
-        {specs.map((s, i) => (
-          <div class={`grid grid-cols-[44px_1fr] gap-4 py-[18px] ${i < specs.length - 1 ? 'border-b border-divider' : ''}`}>
-            <span class="font-heading text-[13px] text-accent">{s.n}</span>
-            <div>
-              <div class="font-heading text-[clamp(26px,2.6vw,34px)] leading-none">{s.title}</div>
-              <div class="text-sm text-text/[0.65] mt-1">{s.sub}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-      
+    <p class="mt-6 text-sm text-text/[0.55] max-w-[54ch]">Отвечаем в течение 15 минут в рабочее время. Расчёт по вашей маршрутной программе — за один день.</p>
+  </div>
+
+  <div class="relative border-t border-divider">
+    <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(32px,3.4vw,52px)] grid grid-cols-2 lg:grid-cols-4 gap-y-9 gap-x-6">
+      {specs.map((s, i) => (
+        <div class={`text-center px-2 ${i > 0 ? 'lg:border-l lg:border-divider' : ''}`}>
+          <div class="font-heading text-[clamp(26px,2.6vw,36px)] leading-[1.05]">{s.title}</div>
+          <div class="text-sm text-text/[0.6] mt-2 max-w-[26ch] mx-auto">{s.sub}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
