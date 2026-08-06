@@ -80,7 +80,7 @@ const articles = [
   >
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Блог</div>
-      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Разбираем корпоративный транспорт по частям</h1>
+      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Разбираем корпоративный транспорт по частям</h1>
       <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Практические материалы для административных директоров, служб закупок и финансовых департаментов: как считать стоимость, что проверять у подрядчика и как устроен контроль поездок.</p>
     </div>
   </section>
@@ -96,9 +96,9 @@ const articles = [
       >
         <div>
           <span class="tag tag-outline">{featured.tag}</span>
-          <h2 class="text-[clamp(26px,3vw,40px)] uppercase tracking-[-0.015em] my-4 mb-3">{featured.title}</h2>
+          <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] my-4 mb-3">{featured.title}</h2>
           <p class="m-0 text-[15px] leading-[1.65] text-text/[0.78] max-w-[56ch]">{featured.body}</p>
-          <span class="inline-block mt-[18px] text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать материал →</span>
+          <span class="inline-block mt-[18px] text-[13px] tracking-[0.06em] text-accent-700">Читать материал →</span>
         </div>
         <div class="min-h-[220px] border border-divider rounded-ds overflow-hidden">
           <img src={featured.img} alt={featured.alt} loading="lazy" class="w-full h-full object-cover block" />
@@ -113,9 +113,9 @@ const articles = [
               <img src={a.img} alt={a.alt} loading="lazy" class={`w-full h-full object-cover block ${a.imgClass}`} />
             </div>
             <span class="card-kicker">{a.kicker}</span>
-            <h3 class="text-[22px] uppercase m-0">{a.title}</h3>
+            <h3 class="text-[22px] m-0">{a.title}</h3>
             <p class="m-0 text-sm leading-[1.6] text-text/[0.72] flex-1">{a.body}</p>
-            <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать →</span>
+            <span class="text-[13px] tracking-[0.06em] text-accent-700">Читать →</span>
           </a>
         ))}
       </div>

@@ -118,7 +118,7 @@ const jsonLd = JSON.stringify({
     <img src="/img/1728469876516-17a32611eb24.jpg" alt="Современный электромобиль китайского бренда на площадке автопарка" class="absolute inset-0 w-full h-full object-cover block" />
     <div class="absolute inset-0" style="background:linear-gradient(120deg, rgba(12,18,26,0.92) 0%, rgba(12,18,26,0.75) 45%, rgba(12,18,26,0.5) 100%)"></div>
     <div class="relative max-w-container mx-auto min-h-[clamp(320px,46vw,620px)] px-[clamp(20px,4vw,56px)] py-[clamp(44px,4.5vw,72px)] flex flex-col justify-end gap-[clamp(24px,2.4vw,32px)]">
-      <h2 class="m-0 max-w-[22ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] uppercase tracking-[-0.015em]">Более 10 лет на рынке — и только лучшие водители за рулём</h2>
+      <h2 class="m-0 max-w-[22ch] text-[#f2f2f3] text-[clamp(28px,3.6vw,54px)] leading-[1.04] tracking-[-0.015em]">Более 10 лет на рынке — и только лучшие водители за рулём</h2>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(16px,2vw,32px)] max-w-[900px]">
         {[['300+', 'автомобилей в управлении'], ['24/7', 'диспетчерская служба'], ['15 мин', 'среднее время подачи в центре']].map(([big, small]) => (
           <div class="border-t border-[#f2f2f359] pt-3">
@@ -138,9 +138,9 @@ const jsonLd = JSON.stringify({
         {services.map((s) => (
           <a class="card blueprint no-underline text-inherit p-[clamp(28px,2.8vw,38px)] gap-3" href={s.href} style={s.accent ? 'border-color:var(--color-accent)' : undefined}>
             <span class="card-kicker">{s.n}</span>
-            <span class="font-heading text-[22px] leading-[1.1] uppercase">{s.title}</span>
+            <span class="font-heading text-[22px] leading-[1.1]">{s.title}</span>
             <p class="card-body text-sm">{s.body}</p>
-            <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Подробнее →</span>
+            <span class="text-[13px] tracking-[0.06em] text-accent-700">Подробнее →</span>
           </a>
         ))}
       </div>
@@ -155,7 +155,7 @@ const jsonLd = JSON.stringify({
         {steps.map((st, i) => (
           <div class={`py-[clamp(30px,3vw,42px)] ${i === 0 ? 'pr-[clamp(18px,2vw,28px)] pl-0' : i === steps.length - 1 ? 'px-0 pl-[clamp(18px,2vw,28px)]' : 'px-[clamp(18px,2vw,28px)]'} ${i < steps.length - 1 ? 'border-r border-divider' : ''}`}>
             <div class="font-heading text-[clamp(44px,4.6vw,64px)] leading-none text-accent-300">{st.n}</div>
-            <h3 class="text-[20px] uppercase mt-3 mb-2">{st.title}</h3>
+            <h3 class="text-[20px] mt-3 mb-2">{st.title}</h3>
             <p class="m-0 text-sm leading-[1.6] text-text/[0.72]">{st.body}</p>
           </div>
         ))}
@@ -170,7 +170,7 @@ const jsonLd = JSON.stringify({
       <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
         {safety.map((c) => (
           <div class="blueprint p-[clamp(28px,2.8vw,38px)] bg-bg">
-            <h3 class="text-[19px] uppercase mt-0 mb-2.5">{c.title}</h3>
+            <h3 class="text-[19px] mt-0 mb-2.5">{c.title}</h3>
             <p class="m-0 text-sm leading-[1.6] text-text/[0.72]">{c.body}</p>
           </div>
         ))}
@@ -183,14 +183,14 @@ const jsonLd = JSON.stringify({
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-start">
       <div>
         <span class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700">04 · Технологии</span>
-        <h2 class="text-[clamp(30px,3.6vw,50px)] uppercase tracking-[-0.015em] mt-3.5 mb-[18px]">TMS-платформа для управления автопарком</h2>
+        <h2 class="text-[clamp(30px,3.6vw,50px)] tracking-[-0.015em] mt-3.5 mb-[18px]">TMS-платформа для управления автопарком</h2>
         <p class="text-base leading-[1.65] max-w-[48ch] text-text/[0.78]">Собственная система ОТК заменяет переписку и таблицы: заявки на поездку, маршруты, лимиты по подразделениям, статус машин на линии и закрывающие документы — в одном интерфейсе.</p>
         <ul class="list-none p-0 mt-[22px] mb-[26px] flex flex-col gap-3">
           {['Заявка на автомобиль за 30 секунд: сотрудник из веб-формы, координатор — списком', 'Онлайн-карта с положением автомобилей и фактическим временем подачи', 'Лимиты и правила: центры затрат, согласование, контроль перерасхода', 'Отчёты за период в Excel: по сотруднику, подразделению, маршруту и стоимости'].map((li) => (
             <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px]"><span class="text-accent">—</span><span>{li}</span></li>
           ))}
         </ul>
-        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/uslugi/#tms">Как устроена платформа</a>
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em]" href="/uslugi/#tms">Как устроена платформа</a>
       </div>
       <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style="background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg))">
         <div class="flex justify-between items-baseline pb-3 border-b border-divider mb-3">
@@ -218,7 +218,7 @@ const jsonLd = JSON.stringify({
         {industries.map((ind) => (
           <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
             <span class="font-heading text-[13px] text-accent">{ind.n}</span>
-            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] uppercase [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
+            <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
             <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
           </div>
         ))}
@@ -239,7 +239,7 @@ const jsonLd = JSON.stringify({
           </div>
         ))}
       </div>
-      <a class="btn btn-secondary min-h-[48px] mt-[26px] px-6 tracking-[0.07em] uppercase" href="/keysy/">Все кейсы и отзывы</a>
+      <a class="btn btn-secondary min-h-[48px] mt-[26px] px-6 tracking-[0.07em]" href="/keysy/">Все кейсы и отзывы</a>
     </div>
   </section>
 
@@ -259,7 +259,7 @@ const jsonLd = JSON.stringify({
           </div>
         ))}
       </div>
-      <a class="btn btn-ghost mt-[26px] tracking-[0.07em] uppercase" href="/kontakty/#faq">Все вопросы и ответы →</a>
+      <a class="btn btn-ghost mt-[26px] tracking-[0.07em]" href="/kontakty/#faq">Все вопросы и ответы →</a>
     </div>
   </section>
 
@@ -267,13 +267,13 @@ const jsonLd = JSON.stringify({
   <section class="bg-accent-900 text-[#f2f2f3]">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(72px,9vw,128px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
       <div>
-        <h2 class="text-[clamp(30px,3.8vw,54px)] uppercase tracking-[-0.015em] m-0 mb-3.5 max-w-[18ch]">Рассчитаем обслуживание по вашей маршрутной программе</h2>
+        <h2 class="text-[clamp(30px,3.8vw,54px)] tracking-[-0.015em] m-0 mb-3.5 max-w-[18ch]">Рассчитаем обслуживание по вашей маршрутной программе</h2>
         <p class="m-0 text-base leading-[1.6] max-w-[46ch] text-[#f2f2f3c7]">Пришлите список маршрутов или просто опишите задачу — вернёмся с расчётом и вариантами класса автомобилей.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
-        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
-        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/kontakty/">Форма на сайте</a>
+        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
+        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] text-[#f2f2f3] border-[#f2f2f373]" href="/kontakty/">Форма на сайте</a>
       </div>
     </div>
   </section>

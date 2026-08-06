@@ -49,7 +49,7 @@ export default {
         success: { DEFAULT: '#4a7d5c', tint: '#e3f0e8', deep: '#2e5139' },
       },
       fontFamily: {
-        heading: ['"Barlow Condensed"', 'system-ui', 'sans-serif'],
+        heading: ['"Barlow"', 'system-ui', 'sans-serif'],
         body: ['"Barlow"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
