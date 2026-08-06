@@ -1,6 +1,5 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import Corners from '../../components/Corners.astro';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -60,7 +59,6 @@ const tzRows = [
         {tzRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
     </table></div>
-    <Corners />
   </div>
 
   <h2>4. Не определён порядок учёта часов</h2>
@@ -78,9 +76,8 @@ const tzRows = [
     <h2 class="text-[26px] uppercase mt-0 mb-2.5">Поможем с подготовкой закупки</h2>
     <p class="m-0 mb-[18px] text-[15px] leading-[1.65] text-text/[0.78]">ОТК готовит коммерческие предложения для обоснования НМЦК и участвует в процедурах по 44-ФЗ и 223-ФЗ. Пришлите проект техзадания — вернёмся с замечаниями и расчётом.</p>
     <div class="flex gap-3 flex-wrap">
-      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram<Corners /></a>
+      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" href="/kontakty/">Оставить заявку</a>
     </div>
-    <Corners />
   </div>
 </ArticleLayout>

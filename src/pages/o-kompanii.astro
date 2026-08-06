@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHead from '../components/SectionHead.astro';
-import Corners from '../components/Corners.astro';
 
 const stats = [
   { big: '10+', small: 'лет на рынке' },
@@ -64,7 +63,7 @@ const jsonLd = JSON.stringify({
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="border-b border-divider" style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px">
+  <section class="border-b border-divider" style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">О компании</div>
       <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Транспортный подрядчик, которому передают весь автопарк</h1>
@@ -97,7 +96,6 @@ const jsonLd = JSON.stringify({
       <figure class="blueprint p-[clamp(32px,3.2vw,46px)] m-0" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
         <blockquote class="m-0 font-heading text-[clamp(22px,2.2vw,30px)] leading-[1.25]">«Соответствие нормам, высоким стандартам качества и пожеланиям заказчика — наши главные приоритеты. Именно так на ежедневной основе решаются логистические вопросы по перевозке сотрудников и корреспонденции».</blockquote>
         <figcaption class="mt-5 text-sm text-text/[0.65]"><strong class="font-heading text-[17px] text-text">Мурад Ханмамедов</strong><br />Генеральный директор ОТК</figcaption>
-        <Corners />
       </figure>
     </div>
   </section>
@@ -122,7 +120,6 @@ const jsonLd = JSON.stringify({
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(44px,5vw,76px)]">
       <div class="blueprint h-[clamp(240px,30vw,420px)]">
         <img src="/img/1449965408869-eaa3f722e40d.jpg" alt="Руки водителя на руле во время поездки" loading="lazy" class="w-full h-full object-cover block" />
-        <Corners />
       </div>
     </div>
   </section>
@@ -149,8 +146,7 @@ const jsonLd = JSON.stringify({
             ))}
           </tbody>
         </table></div>
-        <a class="btn btn-primary blueprint min-h-[48px] mt-[18px] tracking-[0.06em] uppercase" href="mailto:info@otktrans.ru?subject=Запрос%20документов%20для%20закупки">Запросить пакет документов<Corners /></a>
-        <Corners />
+        <a class="btn btn-primary blueprint min-h-[48px] mt-[18px] tracking-[0.06em] uppercase" href="mailto:info@otktrans.ru?subject=Запрос%20документов%20для%20закупки">Запросить пакет документов</a>
       </div>
     </div>
   </section>

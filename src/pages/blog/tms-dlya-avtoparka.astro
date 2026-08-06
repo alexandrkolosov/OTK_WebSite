@@ -1,6 +1,5 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import Corners from '../../components/Corners.astro';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -46,7 +45,6 @@ const stageRows = [
         {stageRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
     </table></div>
-    <Corners />
   </div>
 
   <h2>Шаг третий: контроль исполнения</h2>
@@ -67,9 +65,8 @@ const stageRows = [
     <h2 class="text-[26px] uppercase mt-0 mb-2.5">Покажем платформу ОТК</h2>
     <p class="m-0 mb-[18px] text-[15px] leading-[1.65] text-text/[0.78]">Заявки, назначение, ГЛОНАСС-мониторинг, лимиты и отчёты — в одном интерфейсе. Подключается вместе с обслуживанием, без отдельного внедрения.</p>
     <div class="flex gap-3 flex-wrap">
-      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram<Corners /></a>
+      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" href="/uslugi/#tms">О платформе</a>
     </div>
-    <Corners />
   </div>
 </ArticleLayout>

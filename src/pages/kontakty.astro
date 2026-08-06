@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Corners from '../components/Corners.astro';
 
 const gridBg =
-  'background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px';
+  'background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)';
 
 const faqLeft = [
   { q: 'Каким автопарком вы располагаете?', a: 'В автопарке представлены лучшие мировые бренды: от представительского класса Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai, а также минивэны и микроавтобусы. Возраст автомобилей на линии — до 5 лет, парк расширяем под требования клиента.' },
@@ -54,7 +53,7 @@ const jsonLd = JSON.stringify({
         <h1 class="text-[clamp(34px,4.6vw,60px)] leading-[1.03] uppercase tracking-[-0.02em] m-0 mb-5 max-w-[16ch]">Расскажите задачу — вернёмся с расчётом</h1>
         <p class="text-[17px] leading-[1.6] max-w-[50ch] text-text/[0.78] m-0 mb-7">Быстрее всего — написать в мессенджер: отвечаем в течение 15 минут в рабочее время. Расчёт по маршрутной программе готовим за один рабочий день.</p>
         <div class="flex gap-3 flex-wrap mb-8">
-          <a class="btn btn-primary blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram<Corners /></a>
+          <a class="btn btn-primary blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
           <a class="btn btn-secondary min-h-[52px] px-[26px] tracking-[0.07em] uppercase" href="tel:+74957874095">Позвонить</a>
         </div>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 border-t border-divider pt-6">
@@ -92,7 +91,7 @@ const jsonLd = JSON.stringify({
               <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
             </div>
             <p id="lead-error" class="hidden m-0 text-[13px] leading-[1.5] text-danger" role="alert"></p>
-            <button id="lead-submit" class="btn btn-primary blueprint min-h-[52px] tracking-[0.07em] uppercase" type="submit">Отправить заявку<Corners /></button>
+            <button id="lead-submit" class="btn btn-primary blueprint min-h-[52px] tracking-[0.07em] uppercase" type="submit">Отправить заявку</button>
             <p class="m-0 text-xs leading-[1.5] text-text/[0.55]">Нажимая кнопку, вы соглашаетесь с <a href="#privacy" class="text-accent-700">политикой обработки персональных данных</a>.</p>
           </form>
         </div>
@@ -101,11 +100,10 @@ const jsonLd = JSON.stringify({
           <h2 class="text-[28px] uppercase m-0">Заявка отправлена</h2>
           <p class="m-0 text-[15px] leading-[1.65] text-text/[0.75]">Мы получили ваш запрос и свяжемся в ближайшее время. Если вопрос срочный — напишите нам в Telegram, отвечаем быстрее.</p>
           <div class="flex gap-3 flex-wrap">
-            <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram<Corners /></a>
+            <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
             <button id="lead-reset" class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" type="button">Новая заявка</button>
           </div>
         </div>
-        <Corners />
       </div>
     </div>
   </section>

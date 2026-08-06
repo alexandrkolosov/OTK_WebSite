@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Corners from '../../components/Corners.astro';
 
 const featured = {
   href: '/blog/svoy-voditel-ili-autsorsing/',
@@ -77,7 +76,7 @@ const articles = [
   <!-- Hero -->
   <section
     class="border-b border-divider"
-    style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px"
+    style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)"
   >
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Блог</div>
@@ -101,24 +100,22 @@ const articles = [
           <p class="m-0 text-[15px] leading-[1.65] text-text/[0.78] max-w-[56ch]">{featured.body}</p>
           <span class="inline-block mt-[18px] text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать материал →</span>
         </div>
-        <div class="min-h-[220px] border border-divider">
+        <div class="min-h-[220px] border border-divider rounded-ds overflow-hidden">
           <img src={featured.img} alt={featured.alt} loading="lazy" class="w-full h-full object-cover block" />
         </div>
-        <Corners />
       </a>
 
       <!-- Сетка статей -->
       <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(22px,2.4vw,34px)]">
         {articles.map((a) => (
           <a class="blueprint no-underline text-inherit p-[clamp(24px,2.4vw,32px)] flex flex-col gap-2.5" href={a.href}>
-            <div class="h-[150px] border border-divider mb-1.5">
+            <div class="h-[150px] border border-divider rounded-ds overflow-hidden mb-1.5">
               <img src={a.img} alt={a.alt} loading="lazy" class={`w-full h-full object-cover block ${a.imgClass}`} />
             </div>
             <span class="card-kicker">{a.kicker}</span>
             <h3 class="text-[22px] uppercase m-0">{a.title}</h3>
             <p class="m-0 text-sm leading-[1.6] text-text/[0.72] flex-1">{a.body}</p>
             <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Читать →</span>
-            <Corners />
           </a>
         ))}
       </div>

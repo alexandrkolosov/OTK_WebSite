@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#f2f2f3',
-        surface: '#e9e9ea',
+        bg: '#f5f7fa',
+        surface: '#ffffff',
+        field: '#eef1f6',
         text: '#1d1f20',
-        divider: 'rgba(29,31,32,0.16)',
+        divider: 'rgba(29,45,61,0.09)',
         accent: {
           DEFAULT: '#5980a6',
           100: '#eef6ff',
@@ -52,14 +53,14 @@ export default {
         body: ['"Barlow"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
-        ds: '4px',
-        'ds-sm': '2px',
-        'ds-lg': '7px',
+        ds: '12px',
+        'ds-sm': '8px',
+        'ds-lg': '16px',
       },
       boxShadow: {
-        'ds-sm': '0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent)',
-        'ds-md': '0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent)',
-        'ds-lg': '0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent)',
+        'ds-sm': '0 1px 2px color-mix(in srgb, #1d2d3d 6%, transparent), 0 1px 3px color-mix(in srgb, #1d2d3d 5%, transparent)',
+        'ds-md': '0 10px 28px -10px color-mix(in srgb, #1d2d3d 22%, transparent)',
+        'ds-lg': '0 24px 56px -18px color-mix(in srgb, #1d2d3d 28%, transparent)',
       },
       maxWidth: {
         container: '1320px',

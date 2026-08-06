@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Corners from '../components/Corners.astro';
 
 interface Props {
   /** SEO <title> (from the source <helmet>). */
@@ -60,7 +59,6 @@ const {
       <div class="text-[13px] text-text/[0.55] border-t border-divider pt-3.5 mb-7">{meta}</div>
       <div class="blueprint h-[clamp(200px,26vw,320px)] mb-8">
         <img src={heroImg} alt={heroAlt} loading="lazy" class="w-full h-full object-cover block" />
-        <Corners />
       </div>
       <div class="article-body">
         <slot />

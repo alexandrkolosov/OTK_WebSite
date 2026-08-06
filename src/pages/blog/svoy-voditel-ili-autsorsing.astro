@@ -1,6 +1,5 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import Corners from '../../components/Corners.astro';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -71,7 +70,6 @@ const questions = [
         {compareRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
     </table></div>
-    <Corners />
   </div>
 
   <h2>Когда свой водитель всё-таки оправдан</h2>
@@ -86,9 +84,8 @@ const questions = [
     <h2 class="text-[26px] uppercase mt-0 mb-2.5">Посчитаем на ваших цифрах</h2>
     <p class="m-0 mb-[18px] text-[15px] leading-[1.65] text-text/[0.78]">Пришлите текущий состав парка и маршруты — вернёмся со сравнением стоимости и предложением по обслуживанию.</p>
     <div class="flex gap-3 flex-wrap">
-      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram<Corners /></a>
+      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
       <a class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" href="/kontakty/">Оставить заявку</a>
     </div>
-    <Corners />
   </div>
 </ArticleLayout>

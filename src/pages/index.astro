@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SectionHead from '../components/SectionHead.astro';
-import Corners from '../components/Corners.astro';
 
 const services = [
   { n: '01', href: '/uslugi/#rent', title: 'Автомобиль с водителем', body: 'Закреплённая машина и проверенный водитель под маршрутную программу компании: подача к офису, разъезды, встречи, аэропорты.', accent: false },
@@ -142,7 +141,6 @@ const jsonLd = JSON.stringify({
             <span class="font-heading text-[22px] leading-[1.1] uppercase">{s.title}</span>
             <p class="card-body text-sm">{s.body}</p>
             <span class="text-[13px] tracking-[0.06em] uppercase text-accent-700">Подробнее →</span>
-            <Corners />
           </a>
         ))}
       </div>
@@ -174,7 +172,6 @@ const jsonLd = JSON.stringify({
           <div class="blueprint p-[clamp(28px,2.8vw,38px)] bg-bg">
             <h3 class="text-[19px] uppercase mt-0 mb-2.5">{c.title}</h3>
             <p class="m-0 text-sm leading-[1.6] text-text/[0.72]">{c.body}</p>
-            <Corners />
           </div>
         ))}
       </div>
@@ -193,7 +190,7 @@ const jsonLd = JSON.stringify({
             <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px]"><span class="text-accent">—</span><span>{li}</span></li>
           ))}
         </ul>
-        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/uslugi/#tms">Как устроена платформа<Corners /></a>
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.07em] uppercase" href="/uslugi/#tms">Как устроена платформа</a>
       </div>
       <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style="background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg))">
         <div class="flex justify-between items-baseline pb-3 border-b border-divider mb-3">
@@ -209,7 +206,6 @@ const jsonLd = JSON.stringify({
           </tbody>
         </table></div>
         <div class="mt-3.5 text-xs text-text/[0.55]">Схематичное представление интерфейса TMS ОТК</div>
-        <Corners />
       </div>
     </div>
   </section>
@@ -240,7 +236,6 @@ const jsonLd = JSON.stringify({
             <span class="tag tag-outline">{c.tag}</span>
             <div class="font-heading text-[clamp(38px,4vw,54px)] leading-none mt-[18px] mb-1.5">{c.stat}</div>
             <p class="m-0 text-[15px] leading-[1.6] text-text/[0.75]">{c.body}</p>
-            <Corners />
           </div>
         ))}
       </div>
@@ -276,7 +271,7 @@ const jsonLd = JSON.stringify({
         <p class="m-0 text-base leading-[1.6] max-w-[46ch] text-[#f2f2f3c7]">Пришлите список маршрутов или просто опишите задачу — вернёмся с расчётом и вариантами класса автомобилей.</p>
       </div>
       <div class="flex gap-3 flex-wrap">
-        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener"><Corners />Telegram</a>
+        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] uppercase bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
         <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
         <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] uppercase text-[#f2f2f3] border-[#f2f2f373]" href="/kontakty/">Форма на сайте</a>
       </div>

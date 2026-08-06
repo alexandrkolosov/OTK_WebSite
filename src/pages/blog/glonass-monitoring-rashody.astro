@@ -1,6 +1,5 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import Corners from '../../components/Corners.astro';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -48,7 +47,6 @@ const dataRows = [
         {dataRows.map((r) => (<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>))}
       </tbody>
     </table></div>
-    <Corners />
   </div>
 
   <h2>Источник третий: поездки вне программы</h2>
@@ -68,9 +66,8 @@ const dataRows = [
     <h2 class="text-[26px] uppercase mt-0 mb-2.5">Разберём ваши маршруты</h2>
     <p class="m-0 mb-[18px] text-[15px] leading-[1.65] text-text/[0.78]">У клиентов ОТК ГЛОНАСС-мониторинг и отчётность по каждой поездке входят в обслуживание. Покажем на ваших данных, где теряются часы.</p>
     <div class="flex gap-3 flex-wrap">
-      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram<Corners /></a>
+      <a class="btn btn-primary blueprint min-h-[48px] tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-secondary min-h-[48px] tracking-[0.06em] uppercase" href="/uslugi/#tms">О платформе ОТК</a>
     </div>
-    <Corners />
   </div>
 </ArticleLayout>

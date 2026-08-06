@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Corners from '../components/Corners.astro';
 
 const classes = [
   { img: '/img/1606400142640-69e81d222bcb.jpg', alt: 'Седан на городской дороге', tag: 'tag-neutral', tagLabel: 'Эконом', title: 'Городские разъезды', body: 'Доставка корреспонденции, поездки сотрудников по офисным маршрутам, курьерская логистика.', brands: 'Lada · Chery · Geely · Hyundai', accent: false },
@@ -30,7 +29,7 @@ const standardRows = [
   active="fleet"
 >
   <!-- Hero -->
-  <section class="border-b border-divider" style="background-image:linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px);background-size:64px 64px">
+  <section class="border-b border-divider" style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(64px,8vw,112px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-center">
       <div>
         <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Автопарк</div>
@@ -39,7 +38,6 @@ const standardRows = [
       </div>
       <div class="blueprint h-[clamp(240px,26vw,340px)]">
         <img src="/img/1551432615-469d73f41b97.jpg" alt="Чёрный автомобиль бизнес-класса, вид сбоку" loading="lazy" class="w-full h-full object-cover block" />
-        <Corners />
       </div>
     </div>
   </section>
@@ -54,14 +52,13 @@ const standardRows = [
       <div class="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
         {classes.map((c) => (
           <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style={c.accent ? 'border-color:var(--color-accent)' : undefined}>
-            <div class="h-[170px] border border-divider mb-[18px]">
+            <div class="h-[170px] border border-divider rounded-ds overflow-hidden mb-[18px]">
               <img src={c.img} alt={c.alt} loading="lazy" class="w-full h-full object-cover block" />
             </div>
             <span class={`tag ${c.tag}`}>{c.tagLabel}</span>
             <h3 class="text-[23px] uppercase mt-3.5 mb-2.5">{c.title}</h3>
             <p class="mt-0 mb-3.5 text-sm leading-[1.6] text-text/[0.72]">{c.body}</p>
             <div class="text-[13px] text-accent-700">{c.brands}</div>
-            <Corners />
           </div>
         ))}
       </div>
@@ -92,10 +89,9 @@ const standardRows = [
             ))}
           </tbody>
         </table></div>
-        <Corners />
       </div>
       <div class="flex gap-3 flex-wrap mt-[26px]">
-        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Подобрать автомобиль в Telegram<Corners /></a>
+        <a class="btn btn-primary blueprint min-h-[48px] px-6 tracking-[0.06em] uppercase" href="https://t.me/otktrans" target="_blank" rel="noopener">Подобрать автомобиль в Telegram</a>
         <a class="btn btn-secondary min-h-[48px] px-6 tracking-[0.06em] uppercase" href="/kontakty/">Оставить заявку</a>
       </div>
     </div>
