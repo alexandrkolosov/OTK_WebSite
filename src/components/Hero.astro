@@ -1,9 +1,8 @@
 ---
-// Landing hero — Apple-style centered composition: eyebrow, large headline,
-// subhead, CTAs, then a quiet full-width stat strip. Soft accent glow ground.
-const heroBg =
-  'background:radial-gradient(1200px 720px at 50% -24%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent 60%), radial-gradient(900px 520px at 86% 6%, color-mix(in srgb, var(--color-accent-2) 8%, transparent), transparent 62%), var(--color-bg)';
-
+// Landing hero — Apple-style centered composition over a living "steel aurora"
+// background: soft blurred colour blobs in the brand palette that drift slowly,
+// with a fine grain overlay and a bottom fade to the clean ground. Motion is
+// disabled under prefers-reduced-motion.
 const specs = [
   { title: 'Более 10 лет', sub: 'на рынке корпоративных перевозок' },
   { title: '150+ сотрудников', sub: 'водители, логисты, диспетчеры, механики в штате' },
@@ -11,8 +10,16 @@ const specs = [
   { title: 'Вся Россия', sub: 'Москва, область и крупнейшие города страны' },
 ];
 ---
-<section class="relative border-b border-divider overflow-hidden" style={heroBg}>
-  <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(76px,11vw,152px)] pb-[clamp(56px,7vw,104px)] flex flex-col items-center text-center">
+<section class="hero relative border-b border-divider overflow-hidden">
+  <div class="hero-aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <span class="blob b4"></span>
+    <span class="grain"></span>
+  </div>
+
+  <div class="relative max-w-container mx-auto px-[clamp(20px,4vw,56px)] pt-[clamp(76px,11vw,152px)] pb-[clamp(56px,7vw,104px)] flex flex-col items-center text-center">
     <div class="font-heading text-[13px] tracking-[0.14em] uppercase text-accent-700 mb-6">Корпоративный транспорт · Москва и регионы России</div>
     <h1 class="text-[clamp(44px,6.6vw,88px)] leading-[1.02] tracking-[-0.03em] font-heading m-0 max-w-[15ch] [text-wrap:balance]">Транспортное обслуживание бизнеса под ключ</h1>
     <p class="mt-7 text-[clamp(17px,1.5vw,21px)] leading-[1.55] max-w-[58ch] text-text/[0.72] [text-wrap:pretty]">Автомобили с водителями, корпоративное такси, доставка корреспонденции и собственная TMS-платформа для контроля поездок и расходов. Договор, закрывающие документы и безналичный расчёт.</p>
@@ -23,7 +30,7 @@ const specs = [
     <p class="mt-6 text-sm text-text/[0.55] max-w-[54ch]">Отвечаем в течение 15 минут в рабочее время. Расчёт по вашей маршрутной программе — за один день.</p>
   </div>
 
-  <div class="relative border-t border-divider">
+  <div class="relative border-t border-divider bg-bg/60 backdrop-blur-[2px]">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(32px,3.4vw,52px)] grid grid-cols-2 lg:grid-cols-4 gap-y-9 gap-x-6">
       {specs.map((s, i) => (
         <div class={`text-center px-2 ${i > 0 ? 'lg:border-l lg:border-divider' : ''}`}>
@@ -34,3 +41,50 @@ const specs = [
     </div>
   </div>
 </section>
+
+<style>
+  .hero { background: var(--color-bg); isolation: isolate; }
+
+  .hero-aurora {
+    position: absolute;
+    inset: -10% -10% 0 -10%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    /* fade the whole field out before the stat strip so it sits on clean ground */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%);
+  }
+
+  .blob {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    min-width: 520px;
+    min-height: 520px;
+    border-radius: 50%;
+    filter: blur(54px);
+    opacity: 0.85;
+    will-change: transform;
+  }
+  .b1 { top: -20%; left: -10%; background: radial-gradient(circle at 50% 50%, rgba(89,128,166,0.85), rgba(89,128,166,0) 64%);  animation: drift1 26s ease-in-out infinite; }
+  .b2 { top: -24%; right: -14%; background: radial-gradient(circle at 50% 50%, rgba(129,178,224,0.8), rgba(129,178,224,0) 64%); animation: drift2 32s ease-in-out infinite; }
+  .b3 { top: 10%;  left: 24%;  background: radial-gradient(circle at 50% 50%, rgba(104,186,206,0.7), rgba(104,186,206,0) 66%); animation: drift3 24s ease-in-out infinite; }
+  .b4 { top: -4%;  right: 2%;  background: radial-gradient(circle at 50% 50%, rgba(139,158,222,0.68), rgba(139,158,222,0) 66%); animation: drift4 29s ease-in-out infinite; }
+
+  .grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.045;
+    mix-blend-mode: soft-light;
+  }
+
+  @keyframes drift1 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(6%,4%,0) scale(1.14); } }
+  @keyframes drift2 { 0%,100% { transform: translate3d(0,0,0) scale(1.05); } 50% { transform: translate3d(-7%,5%,0) scale(1); } }
+  @keyframes drift3 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4%,-6%,0) scale(1.12); } }
+  @keyframes drift4 { 0%,100% { transform: translate3d(0,0,0) scale(1.08); } 50% { transform: translate3d(-5%,-4%,0) scale(1); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+  }
+</style>
