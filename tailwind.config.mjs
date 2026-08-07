@@ -50,8 +50,8 @@ export default {
         success: { DEFAULT: '#4a7d5c', tint: '#e3f0e8', deep: '#2e5139' },
       },
       fontFamily: {
-        heading: ['"Barlow"', 'system-ui', 'sans-serif'],
-        body: ['"Barlow"', 'system-ui', 'sans-serif'],
+        heading: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
       },
       borderRadius: {
         ds: '14px',

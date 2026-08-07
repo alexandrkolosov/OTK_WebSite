@@ -66,9 +66,8 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <meta name="twitter:title" content={ogTitle ?? title} />
   <meta name="twitter:description" content={ogDescription ?? description} />
   <meta name="twitter:image" content={ogImageUrl} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-cyrillic-600.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-cyrillic-400.woff2" />
   {jsonLdBlocks.map((block) => (
     <script type="application/ld+json" set:html={block} />
   ))}
