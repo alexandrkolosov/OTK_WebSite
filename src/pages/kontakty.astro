@@ -57,17 +57,17 @@ const jsonLd = JSON.stringify({
         </div>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 border-t border-divider pt-6">
           <div>
-            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Телефон</div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.72] mb-1.5">Телефон</div>
             <a href="tel:+74957874095" class="font-heading text-[24px] text-text no-underline">+7 (495) 787-40-95</a>
-            <div class="text-[13px] text-text/[0.6] mt-1">Пн–Пт 9:00–19:00, диспетчерская 24/7</div>
+            <div class="text-[13px] text-text/[0.72] mt-1">Пн–Пт 9:00–19:00, диспетчерская 24/7</div>
           </div>
           <div>
-            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Почта</div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.72] mb-1.5">Почта</div>
             <a href="mailto:info@otktrans.ru" class="font-heading text-[24px] text-text no-underline">info@otktrans.ru</a>
-            <div class="text-[13px] text-text/[0.6] mt-1">Заявки, документы, тендерная документация</div>
+            <div class="text-[13px] text-text/[0.72] mt-1">Заявки, документы, тендерная документация</div>
           </div>
           <div>
-            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.55] mb-1.5">Офис</div>
+            <div class="text-[12px] tracking-[0.1em] uppercase text-text/[0.72] mb-1.5">Офис</div>
             <div class="text-[15px] leading-[1.6]">105005, Москва,<br>наб. Академика Туполева,<br>д. 15 к. 22, помещ. 1н</div>
           </div>
         </div>
@@ -77,9 +77,9 @@ const jsonLd = JSON.stringify({
         <!-- Form state -->
         <div id="lead-form-wrap">
           <h2 class="text-[26px] m-0 mb-1.5">Заявка на расчёт</h2>
-          <p class="text-sm text-text/[0.65] m-0 mb-5">Заполните форму — менеджер свяжется с вами в ближайшее время.</p>
+          <p class="text-sm text-text/[0.72] m-0 mb-5">Заполните форму — менеджер свяжется с вами в ближайшее время. Обязательны имя и хотя бы один способ связи — телефон или почта.</p>
           <form id="lead-form" class="flex flex-col gap-3.5" novalidate>
-            <div class="field"><label for="f-name">Имя и фамилия</label><input class="input" id="f-name" name="name" type="text" required placeholder="Иван Иванов" /></div>
+            <div class="field"><label for="f-name">Имя и фамилия <span class="text-accent-700" aria-hidden="true">*</span></label><input class="input" id="f-name" name="name" type="text" required aria-required="true" placeholder="Иван Иванов" /></div>
             <div class="field"><label for="f-company">Компания</label><input class="input" id="f-company" name="company" type="text" placeholder="ООО «Компания»" /></div>
             <div class="field"><label for="f-phone">Телефон</label><input class="input" id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" /></div>
             <div class="field"><label for="f-email">Электронная почта</label><input class="input" id="f-email" name="email" type="email" placeholder="name@company.ru" /></div>
@@ -91,7 +91,7 @@ const jsonLd = JSON.stringify({
             </div>
             <p id="lead-error" class="hidden m-0 text-[13px] leading-[1.5] text-danger" role="alert"></p>
             <button id="lead-submit" class="btn btn-primary blueprint min-h-[52px] tracking-[0.07em]" type="submit">Отправить заявку</button>
-            <p class="m-0 text-xs leading-[1.5] text-text/[0.55]">Нажимая кнопку, вы соглашаетесь с <a href="/politika-konfidencialnosti/" class="text-accent-700">политикой обработки персональных данных</a>.</p>
+            <p class="m-0 text-xs leading-[1.5] text-text/[0.72]">Нажимая кнопку, вы соглашаетесь с <a href="/politika-konfidencialnosti/" class="text-accent-700">политикой обработки персональных данных</a>.</p>
           </form>
         </div>
         <!-- Sent state -->
@@ -134,7 +134,7 @@ const jsonLd = JSON.stringify({
         <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <tbody>
             {requisites.map(([k, v]) => (
-              <tr><td class="text-text/[0.6]">{k}</td><td>{v}</td></tr>
+              <tr><td class="text-text/[0.72]">{k}</td><td>{v}</td></tr>
             ))}
           </tbody>
         </table></div>

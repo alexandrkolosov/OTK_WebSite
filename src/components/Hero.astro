@@ -27,7 +27,7 @@ const specs = [
       <a class="btn btn-primary min-h-[54px] px-[30px] text-[15px]" href="https://t.me/otktrans" target="_blank" rel="noopener">Написать в Telegram</a>
       <a class="btn btn-secondary min-h-[54px] px-[30px] text-[15px]" href="tel:+74957874095">Позвонить</a>
     </div>
-    <p class="mt-6 text-sm text-text/[0.55] max-w-[54ch]">Отвечаем в течение 15 минут в рабочее время. Расчёт по вашей маршрутной программе — за один день.</p>
+    <p class="mt-6 text-sm text-text/[0.72] max-w-[54ch]">Отвечаем в течение 15 минут в рабочее время. Расчёт по вашей маршрутной программе — за один день.</p>
   </div>
 
   <div class="relative border-t border-divider bg-bg/60 backdrop-blur-[2px]">
@@ -35,7 +35,7 @@ const specs = [
       {specs.map((s, i) => (
         <div class={`text-center px-2 ${i > 0 ? 'lg:border-l lg:border-divider' : ''}`}>
           <div class="font-heading text-[clamp(26px,2.6vw,36px)] leading-[1.05]">{s.title}</div>
-          <div class="text-sm text-text/[0.6] mt-2 max-w-[26ch] mx-auto">{s.sub}</div>
+          <div class="text-sm text-text/[0.72] mt-2 max-w-[26ch] mx-auto">{s.sub}</div>
         </div>
       ))}
     </div>
@@ -54,7 +54,10 @@ const specs = [
     /* fade the whole field out before the stat strip so it sits on clean ground */
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 92%);
+    /* slow hue shift within the steel ramp — the "iridescent" shimmer */
+    animation: heroTint 20s ease-in-out infinite alternate;
   }
+  @keyframes heroTint { from { filter: hue-rotate(-7deg); } to { filter: hue-rotate(7deg); } }
 
   .blob {
     position: absolute;
@@ -86,5 +89,6 @@ const specs = [
 
   @media (prefers-reduced-motion: reduce) {
     .blob { animation: none !important; }
+    .hero-aurora { animation: none !important; }
   }
 </style>

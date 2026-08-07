@@ -94,7 +94,7 @@ const industries = [
             {c.stats.map((s) => (
               <div class="bg-bg outline outline-1 outline-divider p-5">
                 <div class="font-heading text-[32px] leading-none">{s.big}</div>
-                <div class="text-xs text-text/[0.6] mt-1.5">{s.small}</div>
+                <div class="text-xs text-text/[0.72] mt-1.5">{s.small}</div>
               </div>
             ))}
           </div>
@@ -120,7 +120,7 @@ const industries = [
         {testimonials.map((t) => (
           <figure class="blueprint p-[clamp(30px,3vw,42px)] bg-bg m-0">
             <blockquote class="m-0 font-heading text-[clamp(20px,2vw,26px)] leading-[1.25]">{t.quote}</blockquote>
-            <figcaption class="mt-[18px] text-sm text-text/[0.6]">{t.cite}</figcaption>
+            <figcaption class="mt-[18px] text-sm text-text/[0.72]">{t.cite}</figcaption>
           </figure>
         ))}
       </div>
@@ -130,17 +130,17 @@ const industries = [
   <!-- Отрасли и клиенты -->
   <section class="border-b border-divider">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(80px,9vw,132px)]">
-      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] mb-6">Отрасли и клиенты</div>
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.72] mb-6">Отрасли и клиенты</div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px bg-bg border border-divider">
         {industries.map((ind) => (
           <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
             <span class="font-heading text-[13px] text-accent">{ind.n}</span>
             <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
-            <span class="text-[13px] leading-[1.55] text-text/[0.62]">{ind.body}</span>
+            <span class="text-[13px] leading-[1.55] text-text/[0.72]">{ind.body}</span>
           </div>
         ))}
       </div>
-      <p class="mt-4 text-sm text-text/[0.6]">Услугами ОТК пользуются банки, государственные корпорации, акционерные общества, производственные и торговые компании.</p>
+      <p class="mt-4 text-sm text-text/[0.72]">Услугами ОТК пользуются банки, государственные корпорации, акционерные общества, производственные и торговые компании.</p>
     </div>
   </section>
 
@@ -149,8 +149,8 @@ const industries = [
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(92px,11vw,160px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
       <h2 class="text-[clamp(28px,3.4vw,48px)] tracking-[-0.015em] m-0 max-w-[20ch]">Запросите рекомендации и расчёт по вашей задаче</h2>
       <div class="flex gap-3 flex-wrap">
-        <a class="btn blueprint min-h-[52px] px-[26px] tracking-[0.07em] bg-[#f2f2f3] text-accent-900 border-[#f2f2f3]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
-        <a class="btn min-h-[52px] px-[26px] tracking-[0.07em] text-[#f2f2f3] border-[#f2f2f373]" href="tel:+74957874095">Позвонить</a>
+        <a class="btn btn-onlight min-h-[52px] px-[26px] tracking-[0.07em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn btn-ondark min-h-[52px] px-[26px] tracking-[0.07em]" href="tel:+74957874095">Позвонить</a>
       </div>
     </div>
   </section>

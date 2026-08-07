@@ -75,8 +75,9 @@ const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <slot name="head" />
 </head>
 <body>
+  <a href="#main" class="skip-link">Перейти к содержанию</a>
   <Header active={active} />
-  <main>
+  <main id="main">
     <slot />
   </main>
   <Footer />

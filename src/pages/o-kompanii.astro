@@ -78,7 +78,7 @@ const jsonLd = JSON.stringify({
         {stats.map((s, i) => (
           <div class={`py-[clamp(28px,3vw,44px)] ${i === 0 ? 'pr-5 pl-0' : i === stats.length - 1 ? 'px-0 pl-5' : 'px-5'} ${i < stats.length - 1 ? 'border-r border-divider' : ''}`}>
             <div class="font-heading text-[clamp(36px,3.6vw,50px)] leading-none">{s.big}</div>
-            <div class="text-[13px] tracking-[0.06em] text-text/[0.6] mt-2">{s.small}</div>
+            <div class="text-[13px] tracking-[0.06em] text-text/[0.72] mt-2">{s.small}</div>
           </div>
         ))}
       </div>
@@ -138,7 +138,7 @@ const jsonLd = JSON.stringify({
         </ul>
       </div>
       <div class="blueprint p-[clamp(28px,2.8vw,38px)]">
-        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.55] pb-3 border-b border-divider mb-3.5">Документы по запросу</div>
+        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.72] pb-3 border-b border-divider mb-3.5">Документы по запросу</div>
         <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <tbody>
             {tenderDocs.map((d) => (

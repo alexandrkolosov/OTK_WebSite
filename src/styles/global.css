@@ -125,10 +125,19 @@
   figure { margin: 0; }
   figcaption {
     font-size: 11px; margin-top: var(--space-1);
-    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
   }
   :focus { outline: none; }
   :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .skip-link {
+    position: fixed; top: 10px; left: 10px; z-index: 200;
+    transform: translateY(-160%);
+    background: var(--color-accent-800); color: #fff; text-decoration: none;
+    font-family: var(--font-heading); font-weight: 600; font-size: 14px;
+    padding: 10px 16px; border-radius: var(--radius-md);
+    transition: transform 0.16s ease;
+  }
+  .skip-link:focus-visible { transform: translateY(0); outline-offset: 3px; }
   ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 }
 
@@ -138,7 +147,7 @@
    Design-system components — the wireframe primitives every page reuses.
    ══════════════════════════════════════════════════════════════════════ */
 @layer components {
-  .text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+  .text-muted { color: color-mix(in srgb, var(--color-text) 72%, transparent); }
 
   /* — framed panel — soft rounded container (formerly the blueprint frame). */
   .blueprint {
@@ -171,17 +180,26 @@
   }
   .btn svg { display: block; }
   .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  /* Primary fill is accent-700 (#416180) so white text clears WCAG AA (6.47:1);
+     the lighter #5980a6 accent is reserved for glows / large display accents. */
   .btn-primary {
-    background: var(--color-accent); color: #fff; border-color: var(--color-accent);
-    box-shadow: 0 2px 10px -3px color-mix(in srgb, var(--color-accent) 55%, transparent);
+    background: var(--color-accent-700); color: #fff; border-color: var(--color-accent-700);
+    box-shadow: 0 1px 2px rgba(29,45,61,0.08), 0 14px 32px -12px color-mix(in srgb, var(--color-accent) 42%, transparent);
   }
-  .btn-primary:hover { background: var(--color-accent-600); border-color: var(--color-accent-600); box-shadow: 0 8px 20px -6px color-mix(in srgb, var(--color-accent) 60%, transparent); transform: translateY(-1px); }
-  .btn-primary:active { background: var(--color-accent-700); transform: translateY(0); box-shadow: 0 2px 8px -3px color-mix(in srgb, var(--color-accent) 55%, transparent); }
+  .btn-primary:hover { background: var(--color-accent-800); border-color: var(--color-accent-800); box-shadow: 0 2px 4px rgba(29,45,61,0.1), 0 20px 40px -12px color-mix(in srgb, var(--color-accent) 50%, transparent); transform: translateY(-1px); }
+  .btn-primary:active { background: var(--color-accent-900); transform: translateY(0); box-shadow: 0 1px 2px rgba(29,45,61,0.1); }
   .btn-secondary { background: var(--color-surface); border-color: var(--color-divider); }
   .btn-secondary:hover { border-color: color-mix(in srgb, var(--color-accent) 45%, transparent); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
   .btn-secondary:active { background: color-mix(in srgb, var(--color-text) 5%, transparent); transform: translateY(0); box-shadow: none; }
+  /* On dark bands (footer / CTA) — light outline that lifts on hover. */
+  .btn-ondark { color: #fff; border-color: color-mix(in srgb, #fff 38%, transparent); background: transparent; }
+  .btn-ondark:hover { background: color-mix(in srgb, #fff 12%, transparent); border-color: color-mix(in srgb, #fff 72%, transparent); transform: translateY(-1px); }
+  .btn-ondark:active { background: color-mix(in srgb, #fff 6%, transparent); transform: translateY(0); }
+  .btn-onlight { background: #fff; color: var(--color-accent-900); border-color: #fff; }
+  .btn-onlight:hover { background: #fff; box-shadow: 0 10px 26px -10px rgba(0,0,0,0.5); transform: translateY(-1px); }
+  .btn-onlight:active { transform: translateY(0); box-shadow: none; }
   @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover, .btn:active { transform: none; } }
-  .btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); border-color: transparent; }
+  .btn-ghost { color: var(--color-accent-700); padding-inline: var(--space-1); border-color: transparent; }
   .btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
   .btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
   .btn-icon { width: 36px; height: 36px; padding: 0; }
@@ -241,7 +259,7 @@
   a.card { text-decoration: none; color: inherit; }
   a.card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: color-mix(in srgb, var(--color-accent) 35%, transparent); }
   @media (prefers-reduced-motion: reduce) { .card { transition: none; } a.card:hover { transform: none; } }
-  .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+  .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); }
   .card-title {
     font-family: var(--font-heading); font-weight: var(--font-heading-weight);
     font-size: 17px; line-height: 1.2;
@@ -249,7 +267,7 @@
   .card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
   .card-meta {
     display: flex; align-items: center; gap: 6px; font-size: 11px;
-    color: color-mix(in srgb, var(--color-text) 50%, transparent);
+    color: color-mix(in srgb, var(--color-text) 65%, transparent);
   }
   .elev-sm { box-shadow: var(--shadow-sm); }
   .elev-md { box-shadow: var(--shadow-md); }
@@ -286,7 +304,7 @@
   .table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .table th {
     text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+    color: color-mix(in srgb, var(--color-text) 72%, transparent);
     padding: var(--space-2); border-bottom: 1px solid var(--color-divider);
   }
   .table td {
