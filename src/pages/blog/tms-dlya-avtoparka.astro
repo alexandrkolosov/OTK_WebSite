@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { img } from '../../lib/img';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -28,7 +29,7 @@ const stageRows = [
   category="Технологии"
   lead="Короткий ответ: начинать нужно с приёма заявок и назначения автомобилей — это два процесса, которые съедают больше всего времени координатора и порождают большинство ошибок. Мониторинг, лимиты и аналитика подключаются вторым шагом, когда в системе накопились данные."
   meta="Материал ОТК · 6 минут чтения"
-  heroImg="/img/tms-otk.png"
+  heroImg={img('/img/tms-otk.png')}
   heroAlt="Интерфейс TMS ОТК: обзор компании с филиалами, поставщиками и автомобилями"
   jsonLd={jsonLd}
 >

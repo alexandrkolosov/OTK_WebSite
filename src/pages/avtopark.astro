@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { img } from '../lib/img';
 
 const classes = [
   { img: '/img/1606400142640-69e81d222bcb.jpg', alt: 'Седан на городской дороге', tag: 'tag-neutral', tagLabel: 'Эконом', title: 'Городские разъезды', body: 'Доставка корреспонденции, поездки сотрудников по офисным маршрутам, курьерская логистика.', brands: 'Lada · Chery · Geely · Hyundai', accent: false },
@@ -37,7 +39,7 @@ const standardRows = [
         <p class="text-[length:var(--fs-lead)] leading-[1.6] max-w-[56ch] text-text/[0.78] m-0">В автопарке ОТК представлены автомобили ведущих мировых производителей — от представительского класса Hongqi, Zeekr и Mercedes до Lada, Chery, Geely, Volkswagen, Toyota и Hyundai. Класс и марку подбираем под задачу и бюджет клиента, при необходимости закупаем автомобили под договор.</p>
       </div>
       <div class="blueprint h-[clamp(240px,26vw,340px)]">
-        <img src="/img/1551432615-469d73f41b97.jpg" alt="Чёрный автомобиль бизнес-класса, вид сбоку" loading="lazy" class="w-full h-full object-cover block" />
+        <Image src={img('/img/1551432615-469d73f41b97.jpg')} alt="Чёрный автомобиль бизнес-класса, вид сбоку" widths={[480,960,1440]} sizes="(min-width:1024px) 560px, 100vw" loading="lazy" class="w-full h-full object-cover block" />
       </div>
     </div>
   </section>
@@ -53,7 +55,7 @@ const standardRows = [
         {classes.map((c) => (
           <div class="blueprint p-[clamp(24px,2.4vw,32px)]" style={c.accent ? 'border-color:var(--color-accent)' : undefined}>
             <div class="h-[170px] border border-divider rounded-ds overflow-hidden mb-[18px]">
-              <img src={c.img} alt={c.alt} loading="lazy" class="w-full h-full object-cover block" />
+              <Image src={img(c.img)} alt={c.alt} widths={[320,480,720]} sizes="(min-width:1024px) 360px, (min-width:640px) 50vw, 100vw" loading="lazy" class="w-full h-full object-cover block" />
             </div>
             <span class={`tag ${c.tag}`}>{c.tagLabel}</span>
             <h3 class="text-[23px] mt-3.5 mb-2.5">{c.title}</h3>

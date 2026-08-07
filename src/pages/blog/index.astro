@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { img } from '../../lib/img';
 
 const featured = {
   href: '/blog/svoy-voditel-ili-autsorsing/',
@@ -101,7 +103,7 @@ const articles = [
           <span class="inline-block mt-[18px] text-[13px] tracking-[0.06em] text-accent-700">Читать материал ›</span>
         </div>
         <div class="min-h-[220px] border border-divider rounded-ds overflow-hidden">
-          <img src={featured.img} alt={featured.alt} loading="lazy" class="w-full h-full object-cover block" />
+          <Image src={img(featured.img)} alt={featured.alt} widths={[400,760,1100]} sizes="(min-width:1024px) 620px, 100vw" loading="lazy" class="w-full h-full object-cover block" />
         </div>
       </a>
 
@@ -110,7 +112,7 @@ const articles = [
         {articles.map((a) => (
           <a class="blueprint no-underline text-inherit p-[clamp(24px,2.4vw,32px)] flex flex-col gap-2.5" href={a.href}>
             <div class="h-[150px] border border-divider rounded-ds overflow-hidden mb-1.5">
-              <img src={a.img} alt={a.alt} loading="lazy" class={`w-full h-full object-cover block ${a.imgClass}`} />
+              <Image src={img(a.img)} alt={a.alt} widths={[300,480,640]} sizes="(min-width:1024px) 380px, (min-width:640px) 50vw, 100vw" loading="lazy" class={`w-full h-full object-cover block ${a.imgClass}`} />
             </div>
             <span class="card-kicker">{a.kicker}</span>
             <h3 class="text-[22px] m-0">{a.title}</h3>

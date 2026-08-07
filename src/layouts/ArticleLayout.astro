@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
@@ -19,7 +21,7 @@ interface Props {
   lead: string;
   /** Byline/meta line, e.g. "Материал ОТК · 6 минут чтения". */
   meta: string;
-  heroImg: string;
+  heroImg: ImageMetadata;
   heroAlt: string;
 }
 
@@ -58,7 +60,7 @@ const {
       <p class="text-[19px] leading-[1.6] text-text/[0.78] m-0 mb-2.5">{lead}</p>
       <div class="text-[13px] text-text/[0.72] border-t border-divider pt-3.5 mb-7">{meta}</div>
       <div class="blueprint h-[clamp(200px,26vw,320px)] mb-8">
-        <img src={heroImg} alt={heroAlt} loading="lazy" class="w-full h-full object-cover block" />
+        <Image src={heroImg} alt={heroAlt} widths={[520, 820, 1200]} sizes="(min-width: 820px) 820px, 100vw" loading="eager" fetchpriority="high" class="w-full h-full object-cover block" />
       </div>
       <div class="article-body">
         <slot />

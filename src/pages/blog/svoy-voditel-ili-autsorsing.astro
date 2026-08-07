@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { img } from '../../lib/img';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -51,7 +52,7 @@ const questions = [
   category="Главный материал"
   lead="Короткий ответ: сравнивать оклад водителя со ставкой подрядчика бессмысленно. Считать нужно полную стоимость владения — зарплату с налогами, автомобиль, его обслуживание, простои и замену на время отпуска."
   meta="Материал ОТК · 7 минут чтения"
-  heroImg="/img/1635859890085-ec8cb5466806.jpg"
+  heroImg={img('/img/1635859890085-ec8cb5466806.jpg')}
   heroAlt="Специалист считает расходы, разложив документы на столе"
   jsonLd={jsonLd}
 >

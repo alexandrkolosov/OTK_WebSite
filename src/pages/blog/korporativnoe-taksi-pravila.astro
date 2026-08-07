@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { img } from '../../lib/img';
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -37,7 +38,7 @@ const reporting = [
   category="Организация"
   lead="Короткий ответ: рабочая политика поездок умещается на одну страницу и отвечает на четыре вопроса — кто может заказывать, в каких случаях, до какой суммы и что происходит при превышении. Всё, что длиннее, сотрудники не читают, а служба поддержки трактует по-своему."
   meta="Материал ОТК · 5 минут чтения"
-  heroImg="/img/1611448746128-7c39e03b71e4.jpg"
+  heroImg={img('/img/1611448746128-7c39e03b71e4.jpg')}
   heroAlt="Поездка по городу: вид с водительского места"
   jsonLd={jsonLd}
 >

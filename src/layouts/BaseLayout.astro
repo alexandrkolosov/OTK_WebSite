@@ -38,7 +38,7 @@ const origin = 'https://otktrans.ru';
 const canonical = new URL(path, origin).href;
 // Absolute OG image URL (social crawlers require absolute URLs). Defaults to a
 // representative photo; any page may override via the `ogImage` prop.
-const ogImageUrl = new URL(ogImage ?? '/img/1728469876516-17a32611eb24.jpg', origin).href;
+const ogImageUrl = new URL(ogImage ?? '/og-cover.jpg', origin).href;
 const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!DOCTYPE html>

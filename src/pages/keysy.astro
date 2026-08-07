@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { img } from '../lib/img';
 
 const cases = [
   {
@@ -107,7 +109,7 @@ const industries = [
   <section class="border-b border-divider">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] pb-[clamp(28px,3.5vw,56px)]">
       <div class="blueprint h-[clamp(220px,28vw,380px)]">
-        <img src="/img/1615563164538-89e1da13fcc4.jpg" alt="Водитель за рулём во время рабочей поездки" loading="lazy" class="w-full h-full object-cover block" />
+        <Image src={img('/img/1615563164538-89e1da13fcc4.jpg')} alt="Водитель за рулём во время рабочей поездки" widths={[520,900,1320]} sizes="(min-width:1024px) 1100px, 100vw" loading="lazy" class="w-full h-full object-cover block" />
       </div>
     </div>
   </section>
