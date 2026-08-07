@@ -73,8 +73,8 @@ const industries = [
   <section class="border-b border-divider" style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(88px,10vw,148px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Кейсы и клиенты</div>
-      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Как выглядит переход на обслуживание ОТК</h1>
-      <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Часть клиентов работает с нами по NDA, поэтому кейсы опубликованы без названий компаний. Отраслевые детали и рекомендации предоставляем по запросу в рамках закупочных процедур.</p>
+      <h1 class="text-[length:var(--fs-h1)] leading-[1.02] tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">Как выглядит переход на обслуживание ОТК</h1>
+      <p class="text-[length:var(--fs-lead)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Часть клиентов работает с нами по NDA, поэтому кейсы опубликованы без названий компаний. Отраслевые детали и рекомендации предоставляем по запросу в рамках закупочных процедур.</p>
     </div>
   </section>
 
@@ -90,9 +90,9 @@ const industries = [
               <p class={`${i === c.paras.length - 1 ? 'm-0' : 'mb-2.5'} text-[15px] leading-[1.65] text-text/[0.78]`}><strong>{p.label}</strong> {p.text}</p>
             ))}
           </div>
-          <div class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-px bg-bg border border-divider content-start">
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-px bg-bg border border-divider-strong content-start">
             {c.stats.map((s) => (
-              <div class="bg-bg outline outline-1 outline-divider p-5">
+              <div class="bg-bg outline outline-1 outline-divider-strong p-5">
                 <div class="font-heading text-[32px] leading-none">{s.big}</div>
                 <div class="text-xs text-text/[0.72] mt-1.5">{s.small}</div>
               </div>
@@ -115,7 +115,7 @@ const industries = [
   <!-- Отзывы клиентов -->
   <section class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(92px,11vw,160px)]">
-      <h2 class="text-[clamp(26px,3vw,42px)] tracking-[-0.015em] m-0 mb-7">Отзывы клиентов</h2>
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] m-0 mb-7">Отзывы клиентов</h2>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(16px,1.8vw,28px)]">
         {testimonials.map((t) => (
           <figure class="blueprint p-[clamp(30px,3vw,42px)] bg-bg m-0">
@@ -131,9 +131,9 @@ const industries = [
   <section class="border-b border-divider">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(80px,9vw,132px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.72] mb-6">Отрасли и клиенты</div>
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px bg-bg border border-divider">
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px bg-bg border border-divider-strong">
         {industries.map((ind) => (
-          <div class="bg-bg outline outline-1 outline-divider p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
+          <div class="bg-bg outline outline-1 outline-divider-strong p-[clamp(24px,2.6vw,34px)] flex flex-col gap-2">
             <span class="font-heading text-[13px] text-accent">{ind.n}</span>
             <span class="font-heading text-[clamp(20px,2vw,26px)] leading-[1.1] [overflow-wrap:anywhere] hyphens-auto">{ind.title}</span>
             <span class="text-[13px] leading-[1.55] text-text/[0.72]">{ind.body}</span>
@@ -147,7 +147,7 @@ const industries = [
   <!-- CTA -->
   <section class="bg-accent-900 text-[#f2f2f3]">
     <div class="max-w-container mx-auto px-[clamp(20px,4vw,56px)] py-[clamp(92px,11vw,160px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
-      <h2 class="text-[clamp(28px,3.4vw,48px)] tracking-[-0.015em] m-0 max-w-[20ch]">Запросите рекомендации и расчёт по вашей задаче</h2>
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] m-0 max-w-[20ch]">Запросите рекомендации и расчёт по вашей задаче</h2>
       <div class="flex gap-3 flex-wrap">
         <a class="btn btn-onlight min-h-[52px] px-[26px] tracking-[0.07em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
         <a class="btn btn-ondark min-h-[52px] px-[26px] tracking-[0.07em]" href="tel:+74957874095">Позвонить</a>

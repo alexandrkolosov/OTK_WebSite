@@ -9,6 +9,7 @@ export default {
         field: '#eef1f6',
         text: '#1d1f20',
         divider: 'rgba(29,45,61,0.09)',
+        'divider-strong': 'color-mix(in srgb, #1d2d3d 15%, transparent)',
         accent: {
           DEFAULT: '#5980a6',
           100: '#eef6ff',

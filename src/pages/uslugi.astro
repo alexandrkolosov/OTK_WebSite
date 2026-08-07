@@ -142,8 +142,8 @@ const jsonLd = JSON.stringify({
   <section class="border-b border-divider" style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)">
     <div class="max-w-container mx-auto py-[clamp(88px,10vw,148px)] px-[clamp(20px,4vw,56px)]">
       <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Услуги</div>
-      <h1 class="text-[clamp(36px,5vw,68px)] leading-[1.02] tracking-[-0.02em] m-0 mb-5 max-w-[18ch]">Транспортные услуги для юридических лиц</h1>
-      <p class="text-[clamp(16px,1.3vw,19px)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Пять форматов обслуживания, которые собираются в одну маршрутную программу и один договор. Ниже — что входит в каждый, как считается стоимость и какие документы вы получаете.</p>
+      <h1 class="text-[length:var(--fs-h1)] leading-[1.02] tracking-[-0.02em] m-0 mb-5 max-w-[18ch]">Транспортные услуги для юридических лиц</h1>
+      <p class="text-[length:var(--fs-lead)] leading-[1.6] max-w-[62ch] text-text/[0.78] m-0">Пять форматов обслуживания, которые собираются в одну маршрутную программу и один договор. Ниже — что входит в каждый, как считается стоимость и какие документы вы получаете.</p>
       <div class="flex gap-2.5 flex-wrap mt-[26px]">
         {heroNav.map((b) => (
           <a class="btn btn-secondary min-h-[44px] tracking-[0.06em]" href={b.href}>{b.label}</a>
@@ -206,7 +206,7 @@ const jsonLd = JSON.stringify({
   <!-- Как формируется стоимость -->
   <section class="border-b border-divider">
     <div class="max-w-container mx-auto py-[clamp(92px,11vw,160px)] px-[clamp(20px,4vw,56px)]">
-      <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] m-0 mb-5">Как формируется стоимость</h2>
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] m-0 mb-5">Как формируется стоимость</h2>
       <div class="blueprint p-[clamp(24px,2.6vw,34px)]">
         <div class="overflow-x-auto"><table class="table min-w-[440px]">
           <thead><tr><th>Параметр</th><th>Что учитывается</th><th>Влияние на цену</th></tr></thead>
@@ -224,7 +224,7 @@ const jsonLd = JSON.stringify({
   <!-- CTA -->
   <section class="bg-accent-900 text-[#f2f2f3]">
     <div class="max-w-container mx-auto py-[clamp(92px,11vw,160px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
-      <h2 class="text-[clamp(28px,3.4vw,48px)] tracking-[-0.015em] m-0 max-w-[18ch]">Соберём обслуживание под вашу задачу</h2>
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] m-0 max-w-[18ch]">Соберём обслуживание под вашу задачу</h2>
       <div class="flex gap-3 flex-wrap">
         <a class="btn btn-onlight min-h-[52px] px-[26px] tracking-[0.07em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
         <a class="btn btn-ondark min-h-[52px] px-[26px] tracking-[0.07em]" href="tel:+74957874095">Позвонить</a>
