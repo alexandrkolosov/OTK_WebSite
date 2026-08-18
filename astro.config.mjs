@@ -12,7 +12,10 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  // Inline all CSS into each page's <head> so styling survives even when the
+  // separate /_astro/*.css request is cached-dead or blocked on the client's
+  // network (e.g. CDN throttling). Trades a little HTML size for resilience.
+  build: { format: 'directory', inlineStylesheets: 'always' },
   integrations: [
     tailwind({
       // We manage the base layer / tokens ourselves in src/styles/global.css
