@@ -1,16 +1,17 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://otktrans.ru',
   // Pages stay static (prerendered); only the contact API route opts into
-  // on-demand rendering (see src/pages/api/contact.ts → `prerender = false`),
-  // deployed as a Vercel serverless function.
+  // on-demand rendering (see src/pages/api/contact.ts → `prerender = false`).
+  // Deployed as a self-contained Node server (dist/server/entry.mjs) behind
+  // Nginx on the VPS.
   output: 'static',
-  adapter: vercel(),
+  adapter: node({ mode: 'standalone' }),
   trailingSlash: 'always',
   // Inline all CSS into each page's <head> so styling survives even when the
   // separate /_astro/*.css request is cached-dead or blocked on the client's
