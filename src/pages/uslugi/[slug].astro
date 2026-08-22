@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { services } from '../../lib/services';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const origin = 'https://otktrans.ru';
+const url = `${origin}/uslugi/${service.slug}/`;
+
+const jsonLd = [
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    serviceType: service.serviceType,
+    areaServed: 'Москва и Россия',
+    provider: { '@type': 'Organization', name: 'ОТК', url: origin },
+    description: service.seoDescription,
+    url,
+  }),
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: service.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }),
+  JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Услуги', item: `${origin}/uslugi/` },
+      { '@type': 'ListItem', position: 3, name: service.name, item: url },
+    ],
+  }),
+];
+---
+<BaseLayout
+  title={service.seoTitle}
+  description={service.seoDescription}
+  path={`/uslugi/${service.slug}/`}
+  active="services"
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="border-b border-divider" style="background:radial-gradient(1100px 520px at 88% -12%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 68%), radial-gradient(760px 420px at 4% 8%, color-mix(in srgb, var(--color-accent-2) 10%, transparent), transparent 66%), var(--color-bg)">
+    <div class="max-w-container mx-auto py-[clamp(80px,9vw,140px)] px-[clamp(20px,4vw,56px)]">
+      <nav class="text-[13px] text-text/[0.6] mb-5" aria-label="Хлебные крошки">
+        <a href="/" class="hover:text-accent">Главная</a>
+        <span class="mx-1.5">/</span>
+        <a href="/uslugi/" class="hover:text-accent">Услуги</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-text/[0.8]">{service.name}</span>
+      </nav>
+      <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-4">Услуги</div>
+      <h1 class="text-[length:var(--fs-h1)] leading-[1.04] tracking-[-0.02em] m-0 mb-5 max-w-[20ch]">{service.name}</h1>
+      <p class="text-[length:var(--fs-lead)] leading-[1.6] max-w-[64ch] text-text/[0.78] m-0">{service.heroLead}</p>
+      <div class="flex gap-3 flex-wrap mt-[26px]">
+        <a class="btn btn-primary min-h-[48px] px-[26px] tracking-[0.06em]" href="/kontakty/">Заказать расчёт</a>
+        <a class="btn btn-secondary min-h-[48px] px-[26px] tracking-[0.06em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Что входит + Условия -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto py-[clamp(72px,9vw,140px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-[clamp(40px,4.6vw,84px)] items-start">
+      <div>
+        <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] mt-0 mb-5">Что входит</h2>
+        <ul class="list-none p-0 m-0 flex flex-col gap-[11px]">
+          {service.whatIncludes.map((li) => (
+            <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px] leading-[1.6]"><span class="text-accent">—</span><span>{li}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="blueprint p-[clamp(28px,2.8vw,38px)] bg-bg">
+        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-text/[0.72] pb-3 border-b border-divider mb-3.5">Условия</div>
+        <div class="overflow-x-auto"><table class="table min-w-[440px]">
+          <tbody>
+            {service.conditions.map(([label, value]) => (
+              <tr><td class="text-text/[0.72]">{label}</td><td>{value}</td></tr>
+            ))}
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как это работает -->
+  <section class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto py-[clamp(72px,9vw,140px)] px-[clamp(20px,4vw,56px)]">
+      <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] mt-0 mb-8">Как это работает</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[clamp(22px,2.2vw,34px)]">
+        {service.howItWorks.map((step, i) => (
+          <div class="blueprint p-[clamp(26px,2.6vw,36px)] bg-bg">
+            <div class="font-heading text-[34px] leading-none text-accent-300">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="text-[19px] mt-3 mb-2">{step.title}</h3>
+            <p class="m-0 text-[14px] leading-[1.6] text-text/[0.72]">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Кому подходит + Почему ОТК -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto py-[clamp(72px,9vw,140px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(40px,4.6vw,72px)] items-start">
+      <div>
+        <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] mt-0 mb-4">Кому подходит</h2>
+        <p class="text-base leading-[1.7] text-text/[0.78] m-0">{service.forWhom}</p>
+      </div>
+      <div>
+        <h2 class="text-[clamp(26px,3vw,40px)] tracking-[-0.015em] mt-0 mb-4">Почему ОТК</h2>
+        <ul class="list-none p-0 m-0 flex flex-col gap-[11px]">
+          {service.whyOtk.map((li) => (
+            <li class="grid grid-cols-[22px_1fr] gap-3 text-[15px] leading-[1.6]"><span class="text-accent">✓</span><span>{li}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Типовой сценарий -->
+  <section class="border-b border-divider">
+    <div class="max-w-container mx-auto py-[clamp(64px,8vw,120px)] px-[clamp(20px,4vw,56px)]">
+      <div class="blueprint p-[clamp(30px,3.4vw,52px)] bg-bg max-w-[860px]">
+        <div class="font-heading text-[12px] tracking-[0.14em] uppercase text-accent-700 mb-3">Типовой сценарий</div>
+        <p class="text-[clamp(17px,1.7vw,21px)] leading-[1.55] m-0 text-text/[0.9]">{service.example}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b border-divider" style="background:color-mix(in srgb, var(--color-accent) 6%, var(--color-bg))">
+    <div class="max-w-container mx-auto py-[clamp(72px,9vw,140px)] px-[clamp(20px,4vw,56px)]">
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] mt-0 mb-7">Частые вопросы</h2>
+      <div class="flex flex-col gap-3 max-w-[820px]">
+        {service.faq.map((f) => (
+          <details class="blueprint bg-bg p-[clamp(20px,2vw,28px)] group">
+            <summary class="font-heading text-[16px] leading-[1.35] cursor-pointer list-none flex justify-between gap-4">
+              <span>{f.q}</span><span class="text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="m-0 mt-3 text-[14px] leading-[1.65] text-text/[0.75]">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-accent-900 text-[#f2f2f3]">
+    <div class="max-w-container mx-auto py-[clamp(88px,11vw,150px)] px-[clamp(20px,4vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(34px,3.8vw,68px)] items-center">
+      <h2 class="text-[length:var(--fs-h2)] tracking-[-0.015em] m-0 max-w-[20ch]">Рассчитаем услугу под вашу задачу за один рабочий день</h2>
+      <div class="flex gap-3 flex-wrap">
+        <a class="btn btn-onlight min-h-[52px] px-[26px] tracking-[0.07em]" href="/kontakty/">Оставить заявку</a>
+        <a class="btn btn-ondark min-h-[52px] px-[26px] tracking-[0.07em]" href="https://t.me/otktrans" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn btn-ondark min-h-[52px] px-[26px] tracking-[0.07em]" href="tel:+74957874095">Позвонить</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
